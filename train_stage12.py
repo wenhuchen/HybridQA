@@ -494,7 +494,7 @@ def main():
         do_lower_case=args.do_lower_case,
         cache_dir=args.cache_dir if args.cache_dir else None,
     )
-    args.dim = hidden_size
+    args.dim = config.hidden_size
 
     if args.option in ['stage1', 'stage2']:
         if args.option == 'stage1':
