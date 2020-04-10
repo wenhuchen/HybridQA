@@ -1219,7 +1219,7 @@ def main():
             
             full_split.append({'context': context, 'title': table_id, 
                               'question': d['question'], 'question_id': d['question_id'],
-                              'answers': [{'answer_start': None, 'text': d['answer-text']}]})
+                              'answers': [{'answer_start': None, 'text': None}]})
 
             key2idx[d['question_id']] = step
 
