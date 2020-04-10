@@ -290,7 +290,8 @@ class FilterModel(PretrainedModel):
             config=config,
             cache_dir=cache_dir if cache_dir else None,
         )
-
+        import pdb
+        pdb.set_trace()
         self.side_dim = side_dim
         self.confidence = nn.Embedding(10, side_dim)
         self.source = nn.Embedding(3, side_dim)
