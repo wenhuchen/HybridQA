@@ -1,6 +1,19 @@
 # HybridQA
 This repository contains the dataset and code for paper "HybridQA: A Dataset of Multi-Hop Question Answeringover Tabular and Textual Data"
 
+# Preprocess data:
+First of all, you should download all the tables and passages into your current folder
+```
+git clone https://github.com/wenhuchen/WikiTables-WithLinks
+```
+Then, you can either preprocess the data on your own,
+```
+python preprocessing.py
+```
+or use our preprocessed version from Amazon S3
+```
+wget https://hybridqa.s3-us-west-2.amazonaws.com/preprocessed_data.zip
+```
 
 # Running Stage1:
 Running training command for stage1 using BERT-base-uncased as follows:
