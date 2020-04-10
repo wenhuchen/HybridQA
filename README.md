@@ -13,6 +13,7 @@ python preprocessing.py
 or use our preprocessed version from Amazon S3
 ```
 wget https://hybridqa.s3-us-west-2.amazonaws.com/preprocessed_data.zip
+unzip preprocessed_data.zip
 ```
 
 # Running Stage1:
