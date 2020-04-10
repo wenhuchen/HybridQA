@@ -440,6 +440,12 @@ def main():
         type=str,
         help="Where to load the trained model from",
     )
+    parser.add_argument(
+        "--dim",
+        default=None,
+        type=int,
+        help="Where to load the trained model from",
+    )
     parser.add_argument("--warmup_steps", default=0, type=int, help="Linear warmup over warmup_steps.")
     parser.add_argument(
         "--fp16",
@@ -459,7 +465,6 @@ def main():
 
     device = torch.device("cuda")
     args.n_gpu = torch.cuda.device_count()
-
     args.device = device
     
     if args.do_train:
@@ -489,18 +494,19 @@ def main():
         do_lower_case=args.do_lower_case,
         cache_dir=args.cache_dir if args.cache_dir else None,
     )
+    args.dim = hidden_size
 
     if args.option in ['stage1', 'stage2']:
         if args.option == 'stage1':
-            model = FilterModel(model_class, args.model_name_or_path, config, args.cache_dir)
+            model = FilterModel(model_class, args.model_name_or_path, config, args.cache_dir, dim=args.dim)
             model.to(args.device)
         else:
-            model = JumpModel(model_class, args.model_name_or_path, config, args.cache_dir)
+            model = JumpModel(model_class, args.model_name_or_path, config, args.cache_dir, dim=args.dim)
             model.to(args.device)
     elif args.option == 'stage12':
-        filter_model = FilterModel(model_class, args.model_name_or_path, config, args.cache_dir)
+        filter_model = FilterModel(model_class, args.model_name_or_path, config, args.cache_dir, dim=args.dim)
         filter_model.to(args.device)
-        jump_model = JumpModel(model_class, args.model_name_or_path, config, args.cache_dir)
+        jump_model = JumpModel(model_class, args.model_name_or_path, config, args.cache_dir, dim=args.dim)
         jump_model.to(args.device)
     else:
         raise NotImplementedError
