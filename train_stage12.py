@@ -290,7 +290,6 @@ class FilterModel(PretrainedModel):
             config=config,
             cache_dir=cache_dir if cache_dir else None,
         )
-
         self.side_dim = side_dim
         self.confidence = nn.Embedding(10, side_dim)
         self.source = nn.Embedding(3, side_dim)
@@ -669,6 +668,7 @@ def main():
                 selected_target_nodes.append(tmp[torch.argmax(probs, 0).item()])
             
             discovered_node = selected_target_nodes[0]
+            pred_data[step]['target'] = discovered_node         
             if not discovered_node[2]:
                 pred_data[step]['pred'] = discovered_node[0]
             else:
