@@ -681,6 +681,15 @@ if __name__ == "__main__":
         with open('preprocessed_data/train_step3.json', 'w') as f:
             json.dump(results, f, indent=2)
 
+    if not os.path.exists('preprocessed_data/dev_step3.json'):
+        print("analyzing the training data")
+
+        with open('preprocessed_data/dev_step2.json', 'r') as f:
+            data = json.load(f)
+
+        results = analyze(data)
+        with open('preprocessed_data/dev_step3.json', 'w') as f:
+            json.dump(results, f, indent=2)
 
     if not os.path.exists('preprocessed_data/dev_inputs.json'):
         print("constructing dev inputs")
@@ -701,7 +710,7 @@ if __name__ == "__main__":
             json.dump(results, f, indent=2)
 
 
-    if not os.path.exists('preprocessed_data/stage1_training_data.json'):
+    if not os.path.exists('preprocessed_data/stage1_dev_data.json'):
         print("constructing stage1 data")
 
         with open('preprocessed_data/train_step3.json', 'r') as f:
@@ -720,7 +729,7 @@ if __name__ == "__main__":
         print("Done with Stage1 Data Processing")
 
 
-    if not os.path.exists('preprocessed_data/stage2_training_data.json'):
+    if not os.path.exists('preprocessed_data/stage2_dev_data.json'):
         print("constructing stage2 data")
 
         with open('preprocessed_data/train_step3.json', 'r') as f:
@@ -748,7 +757,7 @@ if __name__ == "__main__":
             json.dump(dev_split, f, indent=2)        
 
 
-    if not os.path.exists('preprocessed_data/stage3_training_data.json'):
+    if not os.path.exists('preprocessed_data/stage3_dev_data.json'):
         print("constructing stage3 data")
 
         with open('preprocessed_data/train_step3.json', 'r') as f:
