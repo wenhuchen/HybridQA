@@ -29,9 +29,14 @@ Running training command for stage1 using BERT-base-uncased as follows:
 ```
 CUDA_VISIBLE_DEVICES=0 python train_stage12.py --do_lower_case --do_train --train_file preprocessed_data/stage1_training_data.json --learning_rate 2e-6 --option stage1 --num_train_epochs 3.0
 ```
-Running training command for stage1 using BERT-base-cased as follows:
+Or Running training command for stage1 using BERT-base-cased as follows:
 ```
 CUDA_VISIBLE_DEVICES=0 python train_stage12.py --model_name_or_path bert-base-cased --do_train --train_file preprocessed_data/stage1_training_data.json --learning_rate 2e-6 --option stage1 --num_train_epochs 3.0
+```
+
+Or Running training command for stage1 using BERT-large-uncased as follows:
+```
+CUDA_VISIBLE_DEVICES=0 python train_stage12.py --model_name_or_path bert-large-uncased --do_train --train_file preprocessed_data/stage1_training_data.json --learning_rate 2e-6 --option stage1 --num_train_epochs 3.0
 ```
 
 ## Train Stage2:
@@ -39,12 +44,15 @@ Running training command for stage2 as follows:
 ```
 CUDA_VISIBLE_DEVICES=0 python train_stage12.py --do_lower_case --do_train --train_file preprocessed_data/stage2_training_data.json --learning_rate 5e-6 --option stage2 --num_train_epochs 3.0
 ```
+Or BERT-base-cased/BERT-large-uncased like above.
+
 
 ## Train Stage3:
 Running training command for stage3 as follows:
 ```
 CUDA_VISIBLE_DEVICES=0 python train_stage3.py --do_train  --do_lower_case   --train_file preprocessed_data/stage3_training_data.json  --per_gpu_train_batch_size 12   --learning_rate 3e-5   --num_train_epochs 4.0   --max_seq_length 384   --doc_stride 128  --threads 8
 ```
+Or BERT-base-cased/BERT-large-uncased like above.
 
 ## Model Selection for Stage1/2:
 Model Selction command for stage1 and stage2 as follows:
