@@ -23,6 +23,30 @@ wget https://hybridqa.s3-us-west-2.amazonaws.com/preprocessed_data.zip
 unzip preprocessed_data.zip
 ```
 
+# Reproduce the reported results
+## Download the trained bert-base model from Amazon S3:
+```
+wget https://hybridqa.s3-us-west-2.amazonaws.com/BERT-base-uncased.zip
+unzip BERT-base-uncased.zip
+```
+It will download and generate folder stage1/stage2/stage3/
+
+## Using pretrained model to run stage1/stage2:
+```
+CUDA_VISIBLE_DEVICES=0 python train_stage12.py --stage1_model stage1/2020_04_09_21_42_39/checkpoint-epoch2/ --stage2_model stage2/2020_04_09_21_44_49/checkpoint-epoch1 --do_lower_case --predict_file preprocessed_data/dev_inputs.json --do_eval --option stage12
+```
+This command generates a intermediate result file
+## Using pretrained model to run stage3:
+```
+CUDA_VISIBLE_DEVICES=0 python train_stage3.py --model_name_or_path stage3/2020_04_09_21_45_27/checkpoint-epoch3 --do_stage3   --do_lower_case  --predict_file predictions.intermediate.json --per_gpu_train_batch_size 12  --max_seq_length 384   --doc_stride 128 --threads 8
+```
+This command generates the prediction file
+## Compute the score
+```
+python evaluate_script.py released_data/dev_reference.json
+```
+
+
 # Training [Default for Bert-base-uncased model]
 ## Train Stage1:
 Running training command for stage1 using BERT-base-uncased as follows:
@@ -57,21 +81,21 @@ Or BERT-base-cased/BERT-large-uncased like above.
 ## Model Selection for Stage1/2:
 Model Selction command for stage1 and stage2 as follows:
 ```
-CUDA_VISIBLE_DEVICES=0 python train_stage12.py --do_lower_case --do_eval --option stage1 --output_dir stage1/2020_04_01_20_03_35/ --predict_file preprocessed_data/stage1_dev_data.json
+CUDA_VISIBLE_DEVICES=0 python train_stage12.py --do_lower_case --do_eval --option stage1 --output_dir stage1/[OWN_PATH]/ --predict_file preprocessed_data/stage1_dev_data.json
 ```
 
 # Evaluation
 ## Model Evaluation Step1 -> Stage1/2:
 Evaluating command for stage1 and stage2 as follows (replace the stage1_model and stage2_model path with your own):
 ```
-CUDA_VISIBLE_DEVICES=0 python train_stage12.py --stage1_model stage1/2020_03_29_14_32_54/checkpoint/ --stage2_model stage2/2020_03_29_14_33_28/checkpoint/ --do_lower_case --predict_file preprocessed_data/dev_inputs.json --do_eval --option stage12
+CUDA_VISIBLE_DEVICES=0 python train_stage12.py --stage1_model stage1/[OWN_PATH] --stage2_model stage2/[OWN_PATH] --do_lower_case --predict_file preprocessed_data/dev_inputs.json --do_eval --option stage12
 ```
 The output will be saved into predictions.intermediate.json, which contain all the answers for non hyper-linked cells, with the hyperlinked cells, we need the MRC model in stage3 to extract the span.
 
-## Model Evaluation Step2 -> Stage1/2:
+## Model Evaluation Step2 -> Stage3:
 Evaluating command for stage3 as follows (replace the model_name_or_path with your own):
 ```
-CUDA_VISIBLE_DEVICES=0 python train_stage3.py --model_name_or_path stage3/2020_03_27_23_44_59/checkpoint/ --do_stage3   --do_lower_case  --predict_file predictions.intermediate.json --per_gpu_train_batch_size 12  --max_seq_length 384   --doc_stride 128 --threads 8
+CUDA_VISIBLE_DEVICES=0 python train_stage3.py --model_name_or_path stage3/[OWN_PATH] --do_stage3   --do_lower_case  --predict_file predictions.intermediate.json --per_gpu_train_batch_size 12  --max_seq_length 384   --doc_stride 128 --threads 8
 ```
 The output is finally saved to predictoins.json, which can be used to calculate F1/EM with reference file.
 
