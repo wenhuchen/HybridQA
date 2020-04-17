@@ -114,7 +114,7 @@ We host CodaLab challenge in [HybridQA Compeition](https://competitions.codalab.
   {
     "question_id": xxxxx,
     "pred": XXX
-  }
+  },
   {
     "question_id": xxxxx,
     "pred": XXX
