@@ -548,11 +548,6 @@ def train(args, train_dataset, model, tokenizer):
 
                 # Log metrics
                 if args.local_rank in [-1, 0] and args.logging_steps > 0 and global_step % args.logging_steps == 0:
-                    # Only evaluate when single GPU otherwise metrics may not average well
-                    if args.local_rank == -1 and args.evaluate_during_training:
-                        results = evaluate(args, model, tokenizer)
-                        for key, value in results.items():
-                            tb_writer.add_scalar("eval_{}".format(key), value, global_step)
                     tb_writer.add_scalar("stage3_lr", scheduler.get_last_lr()[0], global_step)
                     tb_writer.add_scalar("stage3_loss", (tr_loss - logging_loss) / args.logging_steps, global_step)
                     logging_loss = tr_loss
@@ -667,88 +662,6 @@ def evaluate_simplified(inputs, args, model, tokenizer, prefix=""):
     )
 
     return predictions
-
-def evaluate(args, model, tokenizer, prefix=""):
-    dataset, examples, features = load_and_cache_examples(args, tokenizer, evaluate=True, output_examples=True)
-
-    #if not os.path.exists(args.output_dir) and args.local_rank in [-1, 0]:
-    #    os.makedirs(args.output_dir)
-
-    args.eval_batch_size = args.per_gpu_eval_batch_size * max(1, args.n_gpu)
-
-    # Note that DistributedSampler samples randomly
-    eval_sampler = SequentialSampler(dataset)
-    eval_dataloader = DataLoader(dataset, sampler=eval_sampler, batch_size=args.eval_batch_size)
-
-    # multi-gpu evaluate
-    if args.n_gpu > 1 and not isinstance(model, torch.nn.DataParallel):
-        model = torch.nn.DataParallel(model)
-
-    # Eval!
-    logger.info("***** Running evaluation {} *****".format(prefix))
-    logger.info("  Num examples = %d", len(dataset))
-    logger.info("  Batch size = %d", args.eval_batch_size)
-
-    all_results = []
-    start_time = timeit.default_timer()
-
-    for batch in tqdm(eval_dataloader, desc="Evaluating"):
-        model.eval()
-        batch = tuple(t.to(args.device) for t in batch)
-
-        with torch.no_grad():
-            inputs = {
-                "input_ids": batch[0],
-                "attention_mask": batch[1],
-                "token_type_ids": batch[2],
-            }
-
-            example_indices = batch[3]
-
-            outputs = model(**inputs)
-
-        for i, example_index in enumerate(example_indices):
-            eval_feature = features[example_index.item()]
-            unique_id = int(eval_feature.unique_id)
-
-            output = [to_list(output[i]) for output in outputs]
-
-            start_logits, end_logits = output
-            result = SquadResult(unique_id, start_logits, end_logits)
-
-            all_results.append(result)
-
-    evalTime = timeit.default_timer() - start_time
-    logger.info("  Evaluation done in total %f secs (%f sec per example) for %d examples", evalTime, evalTime / len(dataset), len(all_results))
-
-    # Compute predictions
-    output_prediction_file = os.path.join('/tmp/', "predictions_{}.json".format(prefix))
-    output_nbest_file = os.path.join('/tmp/', "nbest_predictions_{}.json".format(prefix))
-
-    if args.version_2_with_negative:
-        output_null_log_odds_file = os.path.join(args.output_dir, "null_odds_{}.json".format(prefix))
-    else:
-        output_null_log_odds_file = None
-
-    predictions = compute_predictions_logits(
-        examples,
-        features,
-        all_results,
-        args.n_best_size,
-        args.max_answer_length,
-        args.do_lower_case,
-        output_prediction_file,
-        output_nbest_file,
-        output_null_log_odds_file,
-        args.verbose_logging,
-        args.version_2_with_negative,
-        args.null_score_diff_threshold,
-        tokenizer,
-    )
-
-    # Compute the F1 and exact scores.
-    results = get_raw_scores(examples, predictions)
-    return results
 
 def _is_whitespace(c):
     if c == " " or c == "\t" or c == "\r" or c == "\n" or ord(c) == 0x202F:
@@ -1034,9 +947,6 @@ def main():
     parser.add_argument("--do_train", action="store_true", help="Whether to run training.")
     parser.add_argument("--do_eval", action="store_true", help="Whether to run eval on the dev set.")
     parser.add_argument("--do_stage3", action="store_true", help="Whether to run eval on the dev set.")    
-    parser.add_argument(
-        "--evaluate_during_training", action="store_true", help="Run evaluation during training at each logging step."
-    )
     parser.add_argument(
         "--do_lower_case", action="store_true", help="Set this flag if you are using an uncased model."
     )
