@@ -53,17 +53,19 @@ CUDA_VISIBLE_DEVICES=0 python train_stage12.py --do_lower_case --do_eval --optio
 ```
 
 # Evaluation
-## Model Evaluation Step1 -> Stage1/2 [replace the stage1_model and stage2_model path with your own]:
-Evaluating command for stage1 and stage2 as follows:
+## Model Evaluation Step1 -> Stage1/2:
+Evaluating command for stage1 and stage2 as follows (replace the stage1_model and stage2_model path with your own):
 ```
 CUDA_VISIBLE_DEVICES=0 python train_stage12.py --stage1_model stage1/2020_03_29_14_32_54/checkpoint/ --stage2_model stage2/2020_03_29_14_33_28/checkpoint/ --do_lower_case --predict_file preprocessed_data/dev_inputs.json --do_eval --option stage12
 ```
+The output will be saved into predictions.intermediate.json, which contain all the answers for non hyper-linked cells, with the hyperlinked cells, we need the MRC model in stage3 to extract the span.
 
-## Model Evaluation Step2 -> Stage1/2 [replace the model_name_or_path with your own]:
-Evaluating command for stage3 as follows:
+## Model Evaluation Step2 -> Stage1/2:
+Evaluating command for stage3 as follows (replace the model_name_or_path with your own):
 ```
 CUDA_VISIBLE_DEVICES=0 python train_stage3.py --model_name_or_path stage3/2020_03_27_23_44_59/checkpoint/ --do_stage3   --do_lower_case  --predict_file predictions.intermediate.json --per_gpu_train_batch_size 12  --max_seq_length 384   --doc_stride 128 --threads 8
 ```
+The output is finally saved to predictoins.json, which can be used to calculate F1/EM with reference file.
 
 ## Computing the score
 ```
