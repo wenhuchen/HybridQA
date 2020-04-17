@@ -20,6 +20,7 @@ stopWords = set(stopwords.words('english'))
 tfidf = TfidfVectorizer(strip_accents="unicode", ngram_range=(2, 3), stop_words=stopWords)
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 resource_path = 'WikiTables-WithLinks/'
+best_threshold = 0.80
 
 # Finding the longest substring
 def longestSubstringFinder(S,T):
@@ -108,8 +109,6 @@ def IR(data_entry):
     dist = pairwise_distances(q_feature, para_feature, 'cosine')[0]
     
     threshold = 0.95
-    best_threshold = 0.70
-
     tfidf_nodes = []
     string_nodes = []
 
