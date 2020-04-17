@@ -1176,23 +1176,27 @@ def main():
     if args.do_eval and args.local_rank in [-1, 0]:
         results = {}
         logger.info("Loading checkpoint %s for evaluation", args.model_name_or_path)
-        checkpoints = [args.model_name_or_path]
+        checkpoints = []
 
-        logger.info("Evaluate the following checkpoints: %s", checkpoints)
+        logger.info("Evaluate the following checkpoints: %s", args.model_name_or_path)
 
-        for checkpoint in checkpoints:
-            # Reload the model
-            global_step = checkpoint.split("-")[-1] if len(checkpoints) > 1 else ""
-            model = model_class.from_pretrained(checkpoint)
-            model.to(args.device)
+        model = model_class.from_pretrained(args.model_name_or_path)
+        model.to(args.device)
 
-            # Evaluate
-            result = evaluate(args, model, tokenizer, prefix=global_step)
+        # Evaluate
+        with open(args.predict_file, 'r') as f:
+            full_split = json.load(f)
+        
+        key2idx = {}
+        for step, d in enumerate(full_split):
+            key2idx[d['question_id']] = step            
 
-            result = dict((k + ("_{}".format(global_step) if global_step else ""), v) for k, v in result.items())
-            results.update(result)
+        prediction = evaluate_simplified(full_split, args, model, tokenizer)
+        for k, step in key2idx.items():
+            full_split[step]['pred'] = prediction.get(k, 'None')
 
-        logger.info("Results: {}".format(results))
+        with open('passage_only_predictions.json', 'w') as f:
+            json.dump(full_split, f, indent=2)
 
     if args.do_stage3 and args.local_rank in [-1, 0]:
         logger.info("Loading checkpoint %s for evaluation", args.model_name_or_path)
