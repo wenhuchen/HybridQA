@@ -5,6 +5,11 @@ This repository contains the dataset and code for the paper [HybridQA: A Dataset
 </p>
 The questions are annotated to require aggregation of information from both the table and its hyperlinked text passages, which poses challenges to existing homongeneous text-based or KB-based models. 
 
+# Requirements:
+- [huggingface transformer 2.6.0](https://github.com/huggingface/transformers)
+- [pytorch 1.4.0](https://pytorch.org/)
+- tensorboardX
+- tqdm
 
 # Preprocess data:
 First of all, you should download all the tables and passages into your current folder
