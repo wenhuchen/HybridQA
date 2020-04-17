@@ -46,7 +46,7 @@ CUDA_VISIBLE_DEVICES=0 python train_stage3.py --model_name_or_path stage3/2020_0
 This command generates the prediction file
 ## Compute the score
 ```
-python evaluate_script.py released_data/dev_reference.json
+python evaluate_script.py predictions.json released_data/dev_reference.json
 ```
 
 
@@ -104,7 +104,7 @@ The output is finally saved to predictoins.json, which can be used to calculate 
 
 ## Computing the score
 ```
-python evaluate_script.py released_data/dev_reference.json
+python evaluate_script.py predictions.json released_data/dev_reference.json
 ```
 For test set, we mask the reference and will provide it in codalab challenge. Please submit your prediction results to codalab to obtain the test accuracy.
 
