@@ -106,7 +106,22 @@ The output is finally saved to predictoins.json, which can be used to calculate 
 ```
 python evaluate_script.py predictions.json released_data/dev_reference.json
 ```
-For test set, we mask the reference and will provide it in codalab challenge. Please submit your prediction results to codalab to obtain the test accuracy.
+
+# CodaLab Evaluation
+We host CodaLab challenge in [HybridQA Compeition](https://competitions.codalab.org/competitions/24420), you should submit your results to the competition to obtain your testing score. The submitted file should first be named "test_answers.json" and then zipped. The required format of the submission file is described as follows:
+```
+[
+  {
+    "question_id": xxxxx,
+    "pred": XXX
+  }
+  {
+    "question_id": xxxxx,
+    "pred": XXX
+  }
+]
+```
+The reported scores are EM and F1.
 
 # Miscellaneous
 If you have any question about the dataset and code, feel free to raise a github issue or shoot me an email. Thanks!
