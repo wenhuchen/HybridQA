@@ -1,5 +1,7 @@
 # HybridQA
-This repository contains the dataset and code for paper "HybridQA: A Dataset of Multi-Hop Question Answeringover Tabular and Textual Data"
+This repository contains the dataset and code for the paper [HybridQA: A Dataset of Multi-Hop Question Answeringover Tabular and Textual Data](https://arxiv.org/pdf/2004.07347.pdf)
+
+Note: This site is still under construction (cleaning the codebase), once it's completed, this line will be removed.
 
 # Preprocess data:
 First of all, you should download all the tables and passages into your current folder
