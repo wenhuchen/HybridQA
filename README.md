@@ -103,4 +103,5 @@ python evaluate_script.py released_data/dev_reference.json
 ```
 For test set, we mask the reference and will provide it in codalab challenge. Please submit your prediction results to codalab to obtain the test accuracy.
 
-If you have any questions about the dataset and code, feel free to raise a github issue or shoot me an email. Thanks!
+# Miscellaneous
+If you have any question about the dataset and code, feel free to raise a github issue or shoot me an email. Thanks!
