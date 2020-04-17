@@ -1,7 +1,12 @@
-# HybridQA
-This repository contains the dataset and code for the paper [HybridQA: A Dataset of Multi-Hop Question Answeringover Tabular and Textual Data](https://arxiv.org/pdf/2004.07347.pdf)
-
 Note: This site is still under construction (cleaning the codebase), once it's completed, this line will be removed.
+
+# HybridQA
+This repository contains the dataset and code for the paper [HybridQA: A Dataset of Multi-Hop Question Answeringover Tabular and Textual Data](https://arxiv.org/pdf/2004.07347.pdf), which is the first large-scale multi-hop question answering dataset on heterogeneous data including tabular and textual data. The whole dataset contains over 70K question-answer pairs based on 13,000 tables, each table is in average linked to 44 passages.
+<p align="center">
+<img src="example.png" width="850">
+</p>
+The questions are annotated to require aggregation of information from both the table and its hyperlinked text passages, which poses challenges to existing homongeneous text-based or KB-based models. 
+
 
 # Preprocess data:
 First of all, you should download all the tables and passages into your current folder
