@@ -1,5 +1,5 @@
 # HybridQA
-This repository contains the dataset and code for the paper [HybridQA: A Dataset of Multi-Hop Question Answeringover Tabular and Textual Data](https://arxiv.org/pdf/2004.07347.pdf), which is the first large-scale multi-hop question answering dataset on heterogeneous data including tabular and textual data. The whole dataset contains over 70K question-answer pairs based on 13,000 tables, each table is in average linked to 44 passages.
+This repository contains the dataset and code for the paper [HybridQA: A Dataset of Multi-Hop Question Answeringover Tabular and Textual Data](https://arxiv.org/pdf/2004.07347.pdf), which is the first large-scale multi-hop question answering dataset on heterogeneous data including tabular and textual data. The whole dataset contains over 70K question-answer pairs based on 13,000 tables, each table is in average linked to 44 passages, more details in https://hybridqa.github.io/.
 <p align="center">
 <img src="example.png" width="850">
 </p>
@@ -10,6 +10,9 @@ The questions are annotated to require aggregation of information from both the 
 - [pytorch 1.4.0](https://pytorch.org/)
 - tensorboardX
 - tqdm
+
+# Dataset Visualization
+Have fun interacting with the dataset: https://hybridqa.github.io/explore.html
 
 # Preprocess data:
 First of all, you should download all the tables and passages into your current folder
