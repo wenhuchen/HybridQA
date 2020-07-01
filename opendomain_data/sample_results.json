@@ -1,0 +1,632 @@
+[
+  {
+    "question": "How many years was the authors married who wrote the series that has been criticized for its perceived saccharine tone and formulaic storytelling ?",
+    "answer-text": "59",
+    "de-contextualized": "How many years was the authors married who wrote the best-selling book series that has been criticized for its perceived saccharine tone and formulaic storytelling ?",
+    "table_id": 2482
+  },
+  {
+    "question": "What is the name of the station whose location is a town in the Goulburn Valley region of Victoria , Australia ?",
+    "answer-text": "Mangalore",
+    "de-contextualized": "What is the name of the Victoria Railway station whose location is a town in the Goulburn Valley region of Victoria , Australia ?",
+    "table_id": 1901
+  },
+  {
+    "question": "between Tim Baillie and Steven Burke what is the date of the earlier birthday ?",
+    "answer-text": "11 May 1979",
+    "de-contextualized": "Between 2012 Summer Olympians Tim Baillie and Steven Burke what is the date of the earlier birthday?",
+    "table_id": 12860
+  },
+  {
+    "question": "Which club won the Provincial League twice in 2001 and 2003 and has a stadium that can hold 15,000 people used for multi-purposes ?",
+    "answer-text": "Nakhon Sawan",
+    "de-contextualized": "Which Regional League Division 2 club won the Provincial League twice in 2001 and 2003 and has a stadium that can hold 15,000 people used for multi-purposes ?",
+    "table_id": 8718
+  },
+  {
+    "question": "What is the location of Pakistan 's biggest Independent Power Producer ?",
+    "answer-text": "Hub , Balochistan",
+    "de-contextualized": "What is the location of Pakistan 's biggest Independent Power Producer that is in service?",
+    "table_id": 2315
+  },
+  {
+    "question": "What is the name of a peninsula in the country with a stage winner who was born in 5 September 1984 ?",
+    "answer-text": "Jutland",
+    "de-contextualized": "What is the name of a peninsula in the country with a 2010 Giro d'Italia stage winner who was born in 5 September 1984 ?",
+    "table_id": 10112
+  },
+  {
+    "question": "what is the year of the venue chapman lecturer born 4/20/1955 ?",
+    "answer-text": "2015",
+    "de-contextualized": "what is the year of the International Mammalian Genome Society venue chapman lecturer born 4/20/1955 ?",
+    "table_id": 9727
+  },
+  {
+    "question": "What is the capital of the country whose stage winner placed seventh in the 2000 Summer Olympics in Sydney ?",
+    "answer-text": "Canberra",
+    "de-contextualized": "What is the capital of the country whose 2010 Giro d'Italia stage winner placed seventh in the 2000 Summer Olympics in Sydney ?",
+    "table_id": 10112
+  },
+  {
+    "question": "What 2008 event did the stage winner from a country with a density of 376 per square kilometre win ?",
+    "answer-text": "Vuelta a Espa\u00f1a",
+    "de-contextualized": "What 2008 event did the 2010 Giro d'Italia stage winner from a country with a density of 376 per square kilometre win ?",
+    "table_id": 10112
+  },
+  {
+    "question": "between Tim Baillie and Laura Bechtolsheimer what is the date of the earlier birthday ?",
+    "answer-text": "11 May 1979",
+    "de-contextualized": "Between 2012 Summer Olympians Tim Baillie and Laura Bechtolsheimer what is the date of the earlier birthday?",
+    "table_id": 12860
+  },
+  {
+    "question": "what is the country of the venue chapman lecturer born 12/29/1957 ?",
+    "answer-text": "USA",
+    "de-contextualized": "what is the country of the International Mammalian Genome Society venue chapman lecturer born 12/29/1957 ?",
+    "table_id": 9727
+  },
+  {
+    "question": "Who directed the play at the theatre which takes pride in its original , groundbreaking productions ?",
+    "answer-text": "Sarah Frankcom",
+    "de-contextualized": "Who directed the play featuring Tom Sturridge at the theatre which takes pride in its original , groundbreaking productions ?",
+    "table_id": 9122
+  },
+  {
+    "question": "What year did was a novel published posthumously that was a show at the performing arts venue located on the Cut ?",
+    "answer-text": "1925",
+    "de-contextualized": "What year was a novel published posthumously that was a show featuring Tom Sturridge at the performing arts venue located on the Cut ?",
+    "table_id": 9122
+  },
+  {
+    "question": "What is the occupation of the father of the driver whose number is 11 ?",
+    "answer-text": "mechanic",
+    "de-contextualized": "What is the occupation of the father of the driver whose number is 11 that raced at the 1999 European Grand Prix ?",
+    "table_id": 9041
+  },
+  {
+    "question": "What was the year when the overall winner was born on 28 July 1972 ?",
+    "answer-text": "1996",
+    "de-contextualized": "What was the year when the overall Amateur winner of the Tour de Guadeloupe was born on 28 July 1972 ?",
+    "table_id": 2446
+  },
+  {
+    "question": "What is the highest altitude in the main city of the second densest metropolitan area of the USA ?",
+    "answer-text": "10,000 feet",
+    "de-contextualized": "What is the highest altitude in the main city of the second densest metropolitan area of the USA ?",
+    "table_id": 12815
+  },
+  {
+    "question": "How many companies on the Fortune 500 are in the main city of the tenth densest metropolitan area of the USA ?",
+    "answer-text": "three",
+    "de-contextualized": "How many companies on the Fortune 500 are in the main city of the tenth densest metropolitan area of the USA ?",
+    "table_id": 12815
+  },
+  {
+    "question": "Who is the son of the racer with a lap time of 1:20.638 ?",
+    "answer-text": "Aur\u00e9lien Panis",
+    "de-contextualized": "Who is the son of the racer with a lap time of 1:20.638 during the qualifying race at the 1999 European Grand Prix ?",
+    "table_id": 9041
+  },
+  {
+    "question": "What is the name of the regiment whose garrison has approx . 22,000 inhabitants ?",
+    "answer-text": "Carabiniers ( 2nd Royal Saxon Heavy Cavalry )",
+    "de-contextualized": "What is the name of the Imperial German cavalry regiment whose garrison has approx . 22,000 inhabitants ?",
+    "table_id": 1538
+  },
+  {
+    "question": "How many languages has the series been published in by the `` Stephen King of children 's literature '' ?",
+    "answer-text": "thirty-two",
+    "de-contextualized": "How many languages has the best-selling book series been published in by the `` Stephen King of children 's literature '' ?",
+    "table_id": 2482
+  },
+  {
+    "question": "Who wrote the screenplay of the 1983 sports film featuring Tottenham Hotspur ?",
+    "answer-text": "Julie Welch",
+    "de-contextualized": "Who wrote the screenplay of the 1983 association football sports film featuring Tottenham Hotspur ?",
+    "table_id": 2964
+  },
+  {
+    "question": "Where does the club with the second most wins play their home games ?",
+    "answer-text": "Whitestone Contracting Stadium",
+    "de-contextualized": "Where does the club with the second most Heartland Championship wins play their home games ?",
+    "table_id": 183
+  },
+  {
+    "question": "The 1999 Ebertfest film about a Norwegian author during the Second World War was directed by a Swedish director born when ?",
+    "answer-text": "23 July 1931",
+    "de-contextualized": "The 1999 Ebertfest film about a Norwegian author during the Second World War was directed by a Swedish director born when ?",
+    "table_id": 3665
+  },
+  {
+    "question": "What is the lap time of the contestant who started karting at the age of eleven ?",
+    "answer-text": "1:20.176",
+    "de-contextualized": "What is the qualifying lap time of the contestant at the 1999 European Grand Prix who started karting at the age of eleven ?",
+    "table_id": 9041
+  },
+  {
+    "question": "What surrounds the island that is one of it 's countries fastest growing tourist destinations ?",
+    "answer-text": "Indian Ocean",
+    "de-contextualized": "What surrounds the island that is one of it 's countries fastest growing tourist destinations ?",
+    "table_id": 6476
+  },
+  {
+    "question": "Which historic district contains 20 historic buildings ?",
+    "answer-text": "Eglin Field Historic District",
+    "de-contextualized": "Which historic district in Florida contains 20 historic buildings ?",
+    "table_id": 3325
+  },
+  {
+    "question": "For the 33rd season , what is the official emblem of the club ?",
+    "answer-text": "seal with Hermes ( Ermis ) on it",
+    "de-contextualized": "For the 33rd season , what is the official emblem of the Greek Basket League club ?",
+    "table_id": 5109
+  },
+  {
+    "question": "How many annual tourists see Faneuil Hall in the main city of the fifth densest metropolitan area of the USA ?",
+    "answer-text": "more than 20 million",
+    "de-contextualized": "How many annual tourists see Faneuil Hall in the main city of the fifth densest metropolitan area of the USA ?",
+    "table_id": 12815
+  },
+  {
+    "question": "between Tim Baillie and Ben Ainslie what is the date of the later birthday ?",
+    "answer-text": "11 May 1979",
+    "de-contextualized": "Between 2012 Summer Olympians Tim Baillie and Ben Ainslie what is the date of the later birthday?",
+    "table_id": 12860
+  },
+  {
+    "question": "What is the name of the regiment whose garrison is the county seat of Leipzig County ?",
+    "answer-text": "1st Royal Bavarian Heavy Cavalry Prince Charles of Bavaria",
+    "de-contextualized": "What is the name of the Imperial German cavalry regiment whose garrison is the county seat of Leipzig County ?",
+    "table_id": 1538
+  },
+  {
+    "question": "How many C\u00e9sar Award nominations did the 2011 film directed by Ma\u00efwenn receive ?",
+    "answer-text": "thirteen",
+    "de-contextualized": "How many C\u00e9sar Award nominations did the French-language 2011 film directed by Ma\u00efwenn receive ?",
+    "table_id": 2420
+  },
+  {
+    "question": "How many MW is the power station formally listed on the stock exchanges of Pakistan in 2005 ?",
+    "answer-text": "1,600",
+    "de-contextualized": "How many MW is the thermal Pakistani power station formally listed on the stock exchanges of Pakistan in 2005 ?",
+    "table_id": 2315
+  },
+  {
+    "question": "Which historic place in Okaloosa County is the only place not located in a year round fishing and beach resort community ?",
+    "answer-text": "Crestview Commercial Historic District",
+    "de-contextualized": "Which historic place in Okaloosa County, Crestview City, is the only place not located in a year round fishing and beach resort community ?",
+    "table_id": 3325
+  },
+  {
+    "question": "The director of the 1999 Ebertfest film that grossed $ 175,138 in Australia was born where ?",
+    "answer-text": "Heemskerk",
+    "de-contextualized": "The director of the 1999 Ebertfest film that grossed $ 175,138 in Australia was born where ?",
+    "table_id": 3665
+  },
+  {
+    "question": "What was the release date of the series by a former researcher and bilingual secretary for Amnesty International ?",
+    "answer-text": "26 June 1997",
+    "de-contextualized": "What was the release date of the best-selling book series by a former researcher and bilingual secretary for Amnesty International ?",
+    "table_id": 2482
+  },
+  {
+    "question": "Which club currently withdrew to play in the Thai League 3 Northern Region with a stadium that can hold 15,000 spectators ?",
+    "answer-text": "Phichit",
+    "de-contextualized": "Which Regional League Division 2 club currently withdrew to play in the Thai League 3 Northern Region with a stadium that can hold 15,000 spectators ?",
+    "table_id": 8718
+  },
+  {
+    "question": "What is the location of the station that had a single platform on the east side of the former broad gauge line ?",
+    "answer-text": "Longwood",
+    "de-contextualized": "What is the location of the Victoria Railway station that had a single platform on the east side of the former broad gauge line ?",
+    "table_id": 1901
+  },
+  {
+    "question": "What is the population density of this island where over 50 % of the inhabitants are minors ?",
+    "answer-text": "41,667",
+    "de-contextualized": "What is the population density of this island where over 50 % of the inhabitants are minors ?",
+    "table_id": 6476
+  },
+  {
+    "question": "What is the location of the power station that started its operation in 1997 and was operated by an American company AES Corporation ?",
+    "answer-text": "Muzaffargarh , Punjab",
+    "de-contextualized": "What is the location of the thermal Pakistani power station in service that started its operation in 1997 and was operated by an American company AES Corporation ?",
+    "table_id": 2315
+  },
+  {
+    "question": "How many boroughs make up the main city of the densest metropolitan area of the USA ?",
+    "answer-text": "boroughs",
+    "de-contextualized": "How many boroughs make up the main city of the densest metropolitan area of the USA ?",
+    "table_id": 12815
+  },
+  {
+    "question": "between Tim Baillie and Scott Brash what is the date of the earlier birthday ?",
+    "answer-text": "11 May 1979",
+    "de-contextualized": "Between 2012 Summer Olympians Tim Baillie and Scott Brash what is the date of the earlier birthday?",
+    "table_id": 12860
+  },
+  {
+    "question": "Who was star actress of the 2010 film directed by Abbas Kiarostami ?",
+    "answer-text": "Juliette Binoche",
+    "de-contextualized": "Who was star actress of the French-language 2010 film directed by Abbas Kiarostami ?",
+    "table_id": 2420
+  },
+  {
+    "question": "Which team currently plays in the Thai League 4 Northern Region that has a stadium that holds 3,066 people ?",
+    "answer-text": "Phitsanulok",
+    "de-contextualized": "Which Regional League Division 2 team currently plays in the Thai League 4 Northern Region that has a stadium that holds 3,066 people ?",
+    "table_id": 8718
+  },
+  {
+    "question": "What country is surrounded by this that has important historical , governmental , commercial , and ecological usages ?",
+    "answer-text": "United States",
+    "de-contextualized": "What country is surrounded by this Island that has important historical , governmental , commercial , and ecological usages ?",
+    "table_id": 6476
+  },
+  {
+    "question": "What is the name of the regiment whose garrison is the capital and most populous city of Bavaria ?",
+    "answer-text": "2nd Royal Bavarian Heavy Cavalry Archduke Francis Ferdinand of Austria",
+    "de-contextualized": "What is the name of the Imperial German cavalry regiment whose garrison is the capital and most populous city of Bavaria ?",
+    "table_id": 1538
+  },
+  {
+    "question": "When was the organization with two titles founded ?",
+    "answer-text": "1927",
+    "de-contextualized": "When was the organization with two Heartland Championship titles founded ?",
+    "table_id": 183
+  },
+  {
+    "question": "What is the name of the main character of the series written by the creator of the child-oriented website Poptropica ?",
+    "answer-text": "Greg Heffley",
+    "de-contextualized": "What is the name of the main character of the best-selling book series written by the creator of the child-oriented website Poptropica ?",
+    "table_id": 2482
+  },
+  {
+    "question": "Who was the director of the 1979 sports film featuring Ian McShane ?",
+    "answer-text": "Neil Leifer",
+    "de-contextualized": "Who was the director of the 1979 association football sports film featuring Ian McShane ?",
+    "table_id": 2964
+  },
+  {
+    "question": "what is the venue of the venue chapman lecturer born 12/29/1957 ?",
+    "answer-text": "Bar Harbor",
+    "de-contextualized": "what is the venue of the International Mammalian Genome Society venue chapman lecturer born 12/29/1957 ?",
+    "table_id": 9727
+  },
+  {
+    "question": "What is the moniker of the main city of the fourth densest metropolitan area of the USA ?",
+    "answer-text": "Capital of Latin America",
+    "de-contextualized": "What is the moniker of the main city of the fourth densest metropolitan area of the USA ?",
+    "table_id": 12815
+  },
+  {
+    "question": "What was the country of origin of the 1979 sports film featuring Chespirito ?",
+    "answer-text": "Mexican",
+    "de-contextualized": "What was the country of origin of the 1979 association football sports film featuring Chespirito ?",
+    "table_id": 2964
+  },
+  {
+    "question": "What is the density ( per km\u00b2 ) of the island that is settled on 80 acres ( 32 hectares ) of land ?",
+    "answer-text": "41,667",
+    "de-contextualized": "What is the population density ( per km\u00b2 ) of the island that is settled on 80 acres ( 32 hectares ) of land ?",
+    "table_id": 6476
+  },
+  {
+    "question": "What is the areakm\u00b2 of the country that is one of the world 's most geographically dispersed sovereign states ?",
+    "answer-text": "1.952",
+    "de-contextualized": "What is the areakm\u00b2 of the Island country that is one of the world 's most geographically dispersed sovereign states ?",
+    "table_id": 6476
+  },
+  {
+    "question": "What was the genre of the 2011 film directed by Philippe Falardeau ?",
+    "answer-text": "comedy-drama",
+    "de-contextualized": "What was the genre of the French-language 2011 film directed by Philippe Falardeau ?",
+    "table_id": 2420
+  },
+  {
+    "question": "what is the country of the venue chapman lecturer born 4/20/1955 ?",
+    "answer-text": "Japan",
+    "de-contextualized": "what is the country of the International Mammalian Genome Society venue chapman lecturer born 4/20/1955 ?",
+    "table_id": 9727
+  },
+  {
+    "question": "What is the name of the regiment whose garrison was a residence of the Prussian kings and the German Kaiser until 1918 ?",
+    "answer-text": "Gardes du Corps",
+    "de-contextualized": "What is the name of the Imperial German cavalry regiment whose garrison was a residence of the Prussian kings and the German Kaiser until 1918 ?",
+    "table_id": 1538
+  },
+  {
+    "question": "What was the year when the overall winner was born on 28 October 1964 ?",
+    "answer-text": "1990",
+    "de-contextualized": "What was the year when the overall Amateur winner of the Tour de Guadeloupe was born on 28 October 1964 ?",
+    "table_id": 2446
+  },
+  {
+    "question": "The Soviet silent film about a mutinous crew is an 1999 Ebertfest film directed by the director of what 1938 epic ?",
+    "answer-text": "Alexander Nevsky",
+    "de-contextualized": "The Soviet silent film about a mutinous crew is an 1999 Ebertfest film directed by the director of what 1938 epic ?",
+    "table_id": 3665
+  },
+  {
+    "question": "What is the name of the regiment whose garrison is the capital and largest city of Germany ?",
+    "answer-text": "Guards Cuirassiers",
+    "de-contextualized": "What is the name of the Imperial German cavalry regiment whose garrison is the capital and largest city of Germany ?",
+    "table_id": 1538
+  },
+  {
+    "question": "between Tim Baillie and Alistair Brownlee what is the date of the earlier birthday ?",
+    "answer-text": "11 May 1979",
+    "de-contextualized": "Between 2012 Summer Olympians Tim Baillie and Alistair Brownlee what is the date of the earlier birthday?",
+    "table_id": 12860
+  },
+  {
+    "question": "Who was the star of the 1981 sports film directed by Bill Forsyth ?",
+    "answer-text": "John Gordon Sinclair",
+    "de-contextualized": "Who was the star of the 1981 association football sports film directed by Bill Forsyth ?",
+    "table_id": 2964
+  },
+  {
+    "question": "What power station is located in the education city of Sindh located on the west bank of River Indus ?",
+    "answer-text": "Jamshoro Power Station",
+    "de-contextualized": "What thermal power station in Pakistan is located in the education city of Sindh located on the west bank of River Indus ?",
+    "table_id": 2315
+  },
+  {
+    "question": "Who created the series by the writer 's name is the pseudonym of the authors ?",
+    "answer-text": "Edward Stratemeyer",
+    "de-contextualized": "Who created the best-selling book series by the writer 's name is the pseudonym of the authors ?",
+    "table_id": 2482
+  },
+  {
+    "question": "What is the location of the station that was rebuilt to allow the standard gauge line to run through the goods shed ?",
+    "answer-text": "Baddaginnie",
+    "de-contextualized": "What is the location of the Victoria Railway station that was rebuilt to allow the standard gauge line to run through the goods shed ?",
+    "table_id": 1901
+  },
+  {
+    "question": "Who was the director of the 1981 sports film starring Sylvester Stallone ?",
+    "answer-text": "John Huston",
+    "de-contextualized": "Who was the director of the 1981 association football sports film starring Sylvester Stallone ?",
+    "table_id": 2964
+  },
+  {
+    "question": "How many patrons was a theatre designed to seat on three levels that had a show by American playwright David Mamet ?",
+    "answer-text": "759",
+    "de-contextualized": "How many patrons was a theatre designed to seat on three levels that had a show featuring Tom Sturridge by American playwright David Mamet ?",
+    "table_id": 9122
+  },
+  {
+    "question": "What is the name of the station whose location is on Kennedys Road , in the City of Greater Shepparton ?",
+    "answer-text": "Arcadia",
+    "de-contextualized": "What is the name of the Victoria Railway station whose location is on Kennedys Road , in the City of Greater Shepparton ?",
+    "table_id": 1901
+  },
+  {
+    "question": "What is the position of the driver who belongs to the only pair of siblings to win Formula One races ?",
+    "answer-text": "4",
+    "de-contextualized": "What is the position of the driver at the 1999 European Grand Prix who belongs to the only pair of siblings to win Formula One races ?",
+    "table_id": 9041
+  },
+  {
+    "question": "Who did the club , based in country 's capital , defeat in 1968 ?",
+    "answer-text": "Slavia V\u0160 Praha",
+    "de-contextualized": "Who did the Greek Basket League club , based in country 's capital , defeat in 1968 ?",
+    "table_id": 5109
+  },
+  {
+    "question": "What was the year when the overall winner was born on March 15 , 1973 ?",
+    "answer-text": "2003",
+    "de-contextualized": "What was the year when the overall Amateur winner of the Tour de Guadeloupe was born on March 15 , 1973 ?",
+    "table_id": 2446
+  },
+  {
+    "question": "What are the team colors of the club of the city that is the capital of Macedonia ?",
+    "answer-text": "blue and white",
+    "de-contextualized": "What are the team colors of the Greek Basket League club of the city that is the capital of Macedonia ?",
+    "table_id": 5109
+  },
+  {
+    "question": "When was the writer born who series is published by Sweet Cherry Publishing in the UK ?",
+    "answer-text": "1958",
+    "de-contextualized": "When was the writer born whose best-selling book series is published by Sweet Cherry Publishing in the UK ?",
+    "table_id": 2482
+  },
+  {
+    "question": "Which historic place was built in 850 CE ?",
+    "answer-text": "Fort Walton Mound",
+    "de-contextualized": "Which historic place located in Florida was built in 850 CE ?",
+    "table_id": 3325
+  },
+  {
+    "question": "What is the official name of the club that has had the most championships ?",
+    "answer-text": "The Poverty Bay Rugby Football Union",
+    "de-contextualized": "What is the official name of the club that has had the most Heartland Championship championships ?",
+    "table_id": 183
+  },
+  {
+    "question": "Which arena belongs to the club whos full name is Panthessalonikeios Athlitik\u00f3s \u00d3milos Konstantinoupoliton ?",
+    "answer-text": "PAOK Sports Arena",
+    "de-contextualized": "Which arena belongs to the Greek Basket League club whose full name is Panthessalonikeios Athlitik\u00f3s \u00d3milos Konstantinoupoliton ?",
+    "table_id": 5109
+  },
+  {
+    "question": "What was the year when the overall winner was born on December 15 , 1969 ?",
+    "answer-text": "1994",
+    "de-contextualized": "What was the year when the overall Amateur winner of the Tour de Guadeloupe was born on December 15 , 1969 ?",
+    "table_id": 2446
+  },
+  {
+    "question": "How many teams played when Buller was the champion ?",
+    "answer-text": "12",
+    "de-contextualized": "How many teams played when Buller was the Heartland Championship champion ?",
+    "table_id": 183
+  },
+  {
+    "question": "What year did a theatre open that had a show based on the novel by George Orwell ?",
+    "answer-text": "1903",
+    "de-contextualized": "What year did a theatre open that had a show featuring Tom Sturridge based on the novel by George Orwell ?",
+    "table_id": 9122
+  },
+  {
+    "question": "What mountains delimit the country that has a stage winner who admitted he was planning to use doping in 2007 ?",
+    "answer-text": "The Alps",
+    "de-contextualized": "What mountains delimit the country that has a 2010 Giro d'Italia stage winner who admitted he was planning to use doping in 2007 ?",
+    "table_id": 10112
+  },
+  {
+    "question": "Which historic district was designated a historic district in the year 1992 ?",
+    "answer-text": "Gulfview Hotel Historic District",
+    "de-contextualized": ": Which historic district in the National register for historic places was designated a historic district in the year 1992 ?",
+    "table_id": 3325
+  },
+  {
+    "question": "what is the venue of the venue chapman lecturer born 4/20/1955 ?",
+    "answer-text": "Yokohama",
+    "de-contextualized": "what is the venue of the International Mammalian Genome Society venue chapman lecturer born 4/20/1955 ?",
+    "table_id": 9727
+  },
+  {
+    "question": "Which river is the site of the main city of the eighth densest metropolitan area of the USA ?",
+    "answer-text": "Potomac River",
+    "de-contextualized": "Which river is the site of the main city of the eighth densest metropolitan area of the USA ?",
+    "table_id": 12815
+  },
+  {
+    "question": "What is the population of the island whose strait in the Central Visayas region ?",
+    "answer-text": "624",
+    "de-contextualized": "What is the population of the island whose strait in the Central Visayas region ?",
+    "table_id": 6476
+  },
+  {
+    "question": "Which club is rather semiformal located in Thailand with a multipurpose stadium that can hold 3,245 people ?",
+    "answer-text": "Uttaradit",
+    "de-contextualized": "Which Regional League Division 2 club is rather semiformal located in Thailand with a multipurpose stadium that can hold 3,245 people ?",
+    "table_id": 8718
+  },
+  {
+    "question": "Which historic place is home to 14 historic buildings ?",
+    "answer-text": "Gulfview Hotel Historic District",
+    "de-contextualized": "Which historic place located in Fort Walton beah is home to 14 historic buildings ?",
+    "table_id": 3325
+  },
+  {
+    "question": "what is the year of the venue chapman lecturer born 12/29/1957 ?",
+    "answer-text": "2014",
+    "de-contextualized": "what is the year of the International Mammalian Genome Society venue chapman lecturer born 12/29/1957 ?",
+    "table_id": 9727
+  },
+  {
+    "question": "What was the genre of the 2012 film directed by Michael Haneke ?",
+    "answer-text": "romantic tragedy",
+    "de-contextualized": "What was the genre of the French-language 2012 film directed by Michael Haneke ?",
+    "table_id": 2420
+  },
+  {
+    "question": "The director of `` Dingo '' directed a 1999 Ebertfest film pick written by who ?",
+    "answer-text": "Heather Rose",
+    "de-contextualized": "The director of `` Dingo '' directed a 1999 Ebertfest film pick written by who ?",
+    "table_id": 3665
+  },
+  {
+    "question": "What is the name of the regiment whose garrison is the largest city on the River Elbe after Hamburg ?",
+    "answer-text": "1st Royal Saxon Guards Heavy Cavalry",
+    "de-contextualized": "What is the name of the Imperial German cavalry regiment whose garrison is the largest city on the River Elbe after Hamburg ?",
+    "table_id": 1538
+  },
+  {
+    "question": "Which historic place contains 10 historic buildings ?",
+    "answer-text": "Camp Pinchot Historic District",
+    "de-contextualized": "Which historic place in the listings of National historic places contains 10 historic buildings ?",
+    "table_id": 3325
+  },
+  {
+    "question": "Who wrote the novel that is the basis of the 2010 film directed by Gilles Paquet-Brenner ?",
+    "answer-text": "Tatiana de Rosnay",
+    "de-contextualized": "Who wrote the novel that is the basis of the French-language 2010 film directed by Gilles Paquet-Brenner ?",
+    "table_id": 2420
+  },
+  {
+    "question": "What was the year when the overall winner was born on February 7 , 1974 ?",
+    "answer-text": "2004",
+    "de-contextualized": "What was the year when the overall Amateur winner of the Tour de Guadeloupe was born on February 7 , 1974 ?",
+    "table_id": 2446
+  },
+  {
+    "question": "What is the location of the Pakistani petroleum company which is a subsidiary of UK-domiciled Attock Oil Company ?",
+    "answer-text": "Rawalpindi , Punjab",
+    "de-contextualized": "What is the location of the Pakistani petroleum company which is a subsidiary of UK-domiciled Attock Oil Company that is in service?",
+    "table_id": 2315
+  },
+  {
+    "question": "What is the nickname of the contestant who 's gap is +0.466 ?",
+    "answer-text": "The Flying Finn",
+    "de-contextualized": "What is the nickname of the contestant who 's gap is +0.466 during the qualifying race at the 1999 European Grand Prix ?",
+    "table_id": 9041
+  },
+  {
+    "question": "Of the stadiums with a higher seating capacity , what billionaire family owns its club ?",
+    "answer-text": "Giannakopoulos",
+    "de-contextualized": "Of the stadiums with a higher seating capacity , what billionaire family owns its Greek Basket League club ?",
+    "table_id": 5109
+  },
+  {
+    "question": "Who is the oldest Minardi , Ford driver ?",
+    "answer-text": "Luca Badoer",
+    "de-contextualized": "Who is the oldest Minardi, Ford driver who raced in the qualifers at the 1999 European Grand Prix ?",
+    "table_id": 9041
+  },
+  {
+    "question": "Who was the writer of the 1979 sports film featuring a player kicked off the team for fighting with the star ?",
+    "answer-text": "Francis Veber",
+    "de-contextualized": "Who was the writer of the 1979 sports film featuring an association football player kicked off the team for fighting with the star ?",
+    "table_id": 2964
+  },
+  {
+    "question": "How many MW is the power station owned by a UK-domiciled conglomerate company based in Manchester , England , United Kingdom ?",
+    "answer-text": "165",
+    "de-contextualized": "How many MW is the thermal Pakistani power station owned by a UK-domiciled conglomerate company based in Manchester , England , United Kingdom ?",
+    "table_id": 2315
+  },
+  {
+    "question": "Between which years did the stage winners whose country is composed of 26 cantons compete ?",
+    "answer-text": "2004 and 2014",
+    "de-contextualized": "Between which years did the 2010 Giro d'Italia stage winners whose country is composed of 26 cantons compete ?",
+    "table_id": 10112
+  },
+  {
+    "question": "between Nicola Adams and Tim Baillie what is the date of the earlier birthday ?",
+    "answer-text": "11 May 1979",
+    "de-contextualized": "Between 2012 Summer Olympians Nicola Adams and Tim Baillie what is the date of the earlier birthday?",
+    "table_id": 12860
+  },
+  {
+    "question": "Which club is semi professional and based in the Lamphun Province that has a stadium mostly used for football matches ?",
+    "answer-text": "Lamphun Warior",
+    "de-contextualized": "Which Regional League Division 2 club is semi professional and based in the Lamphun Province that has a stadium mostly used for football matches ?",
+    "table_id": 8718
+  },
+  {
+    "question": "What is the population of the city whos club initially featured sports like volleyball and judo ?",
+    "answer-text": "90,000",
+    "de-contextualized": "What is the population of the city whose Greek Basket League club initially featured sports like volleyball and judo ?",
+    "table_id": 5109
+  },
+  {
+    "question": "The organization with the most titles is from what district ?",
+    "answer-text": "Gisborne district",
+    "de-contextualized": "The organization with the most Heartland Championship titles is from what district ?",
+    "table_id": 183
+  },
+  {
+    "question": "What was the year when the overall winner was born on October 17 , 1975 ?",
+    "answer-text": "2001",
+    "de-contextualized": "What was the year when the overall Amateur winner of the Tour de Guadeloupe was born on October 17 , 1975 ?",
+    "table_id": 2446
+  },
+  {
+    "question": "What year did a play premier that was show that was performed at a theatre previously known as the Plymouth Theatre ?",
+    "answer-text": "1983",
+    "de-contextualized": "What year did a play featuring Tom Sturridge premier that was show that was performed at a theatre previously known as the Plymouth Theatre ?",
+    "table_id": 9122
+  }
+]
