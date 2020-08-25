@@ -1,10 +1,18 @@
 # HybridQA
-This repository contains the dataset and code for the paper [HybridQA: A Dataset of Multi-Hop Question Answeringover Tabular and Textual Data](https://arxiv.org/pdf/2004.07347.pdf), which is the first large-scale multi-hop question answering dataset on heterogeneous data including tabular and textual data. The whole dataset contains over 70K question-answer pairs based on 13,000 tables, each table is in average linked to 44 passages.
+This repository contains the dataset and code for the paper [HybridQA: A Dataset of Multi-Hop Question Answeringover Tabular and Textual Data](https://arxiv.org/pdf/2004.07347.pdf), which is the first large-scale multi-hop question answering dataset on heterogeneous data including tabular and textual data. The whole dataset contains over 70K question-answer pairs based on 13,000 tables, each table is in average linked to 44 passages, more details in https://hybridqa.github.io/.
 <p align="center">
 <img src="example.png" width="850">
 </p>
 The questions are annotated to require aggregation of information from both the table and its hyperlinked text passages, which poses challenges to existing homongeneous text-based or KB-based models. 
 
+# Requirements:
+- [huggingface transformer 2.6.0](https://github.com/huggingface/transformers)
+- [pytorch 1.4.0](https://pytorch.org/)
+- tensorboardX
+- tqdm
+
+# Dataset Visualization
+Have fun interacting with the dataset: https://hybridqa.github.io/explore.html
 
 # Preprocess data:
 First of all, you should download all the tables and passages into your current folder
@@ -41,7 +49,7 @@ CUDA_VISIBLE_DEVICES=0 python train_stage3.py --model_name_or_path stage3/2020_0
 This command generates the prediction file
 ## Compute the score
 ```
-python evaluate_script.py released_data/dev_reference.json
+python evaluate_script.py predictions.json released_data/dev_reference.json
 ```
 
 
@@ -99,9 +107,24 @@ The output is finally saved to predictoins.json, which can be used to calculate 
 
 ## Computing the score
 ```
-python evaluate_script.py released_data/dev_reference.json
+python evaluate_script.py predictions.json released_data/dev_reference.json
 ```
-For test set, we mask the reference and will provide it in codalab challenge. Please submit your prediction results to codalab to obtain the test accuracy.
+
+# CodaLab Evaluation
+We host CodaLab challenge in [HybridQA Compeition](https://competitions.codalab.org/competitions/24420), you should submit your results to the competition to obtain your testing score. The submitted file should first be named "test_answers.json" and then zipped. The required format of the submission file is described as follows:
+```
+[
+  {
+    "question_id": xxxxx,
+    "pred": XXX
+  },
+  {
+    "question_id": xxxxx,
+    "pred": XXX
+  }
+]
+```
+The reported scores are EM and F1.
 
 # Miscellaneous
 If you have any question about the dataset and code, feel free to raise a github issue or shoot me an email. Thanks!
