@@ -69,30 +69,13 @@ def IR(data_entry):
     for row_idx, row in enumerate(table['data']):
         for col_idx, cell in enumerate(row):
             for i, ent in enumerate(cell[1]):
-                if ent:
-                    if ent not in mapping_entity:
-                        mapping_entity[ent] = {cell[0][i]: [(row_idx, col_idx)]}
-                    else:
-                        if cell[0][i] not in mapping_entity[ent]:
-                            mapping_entity[ent][cell[0][i]] = [(row_idx, col_idx)]
-                        else:
-                            mapping_entity[ent][cell[0][i]] = mapping_entity[ent][cell[0][i]] + [(row_idx, col_idx)]
-    
-    for col_idx, header in enumerate(table['header']):
-        for i, ent in enumerate(header[1]):
-            if ent:
-                if ent not in mapping_entity:
-                    mapping_entity[ent] = {header[0][i]: [(-1, col_idx)]}
-                else:
-                    if header[0][i] not in mapping_entity[ent]:
-                        mapping_entity[ent][header[0][i]] = [(-1, col_idx)]
-                    else:
-                        mapping_entity[ent][header[0][i]] = mapping_entity[ent][header[0][i]] + [(-1, col_idx)]
+                mapping_entity[ent] = mapping_entity.get(ent, []) + [(row_idx, col_idx)]
 
     # Convert the paragraph and question into TF-IDF features
     keys = []
     paras = []
-    for k, v in requested_documents.items():
+    for k in mapping_entity:
+        v = requested_documents[k]
         for _ in tokenizer.tokenize(v):
             keys.append(k)
             paras.append(_)
@@ -175,26 +158,23 @@ def find_superlative(table_id, table):
             if headers[j] not in ['#', 'Type', 'Name', 'Location', 'Position', 'Category', 'Nationality',
                                   'School', 'Notes', 'Notability', 'Country']:
                 for i, row in enumerate(table['data']):
-                    if len(table['data'][i][j][0]) > 1:
+                    cell = table['data'][i][j][0]
+                    if cell in ['', '-']:
                         continue
 
-                    data = table['data'][i][j][0][0]
-                    if data in ['', '-']:
-                        continue
-
-                    num = convert2num(data)
-                    if num and data.isdigit() and num > 1000 and num < 2020 and activate_date_or_num in ['date', None]:
-                        date_format = parse(data)
-                        mapping[headers[j]].append((date_format, 'date', [data, (i, j), None, None, 1.0]))
+                    num = convert2num(cell)
+                    if num and cell.isdigit() and num > 1000 and num < 2020 and activate_date_or_num in ['date', None]:
+                        date_format = parse(cell)
+                        mapping[headers[j]].append((date_format, 'date', [cell, (i, j), None, None, 1.0]))
                         activate_date_or_num = 'date'
                     elif num and activate_date_or_num in ['num', None]: 
-                        mapping[headers[j]].append((num, 'number', [data, (i, j), None, None, 1.0]))
+                        mapping[headers[j]].append((num, 'number', [cell, (i, j), None, None, 1.0]))
                         activate_date_or_num = 'num'
                     else:
                         try:
-                            date_format = parse(data)
+                            date_format = parse(cell)
                             if date_format and activate_date_or_num in ['date', None]:
-                                mapping[headers[j]].append((date_format, 'date', [data, (i, j), None, None, 1.0]))
+                                mapping[headers[j]].append((date_format, 'date', [cell, (i, j), None, None, 1.0]))
                                 activate_date_or_num = 'date'
                         except Exception:
                             continue
@@ -243,11 +223,9 @@ def CELL(d):
     tmp_link = []
     for row_idx, row in enumerate(table['data']):
         for col_idx, cell in enumerate(row):
-            if cell[0] != ['']:
-                for ent in cell[0]:
-                    ratio = fuzz.partial_ratio(' ' + ent.lower() + ' ', ' ' + d['question'].lower() + ' ')
-                    if ratio > threshold:
-                        tmp_link.append((ent, (row_idx, col_idx), None, 'string match', ratio / 100))
+            ratio = fuzz.partial_ratio(' ' + cell[0].lower() + ' ', ' ' + d['question'].lower() + ' ')
+            if ratio > threshold:
+                tmp_link.append((cell[0], (row_idx, col_idx), None, 'string match', ratio / 100))
 
     d['links'] = tmp_link
     if any([_ in d['question_postag'] for _ in triggers]):
@@ -259,12 +237,6 @@ def CELL(d):
 
     return d
 
-def hash_string(string):
-    import hashlib
-    sha = hashlib.sha256()
-    sha.update(string.encode())
-    return sha.hexdigest()[:16]
-
 def analyze(processed):
     trivial, easy, medium, hard, no_answer, number, yesorno, repeated = 0, 0, 0, 0, 0, 0, 0, 0
     from_passage, from_cell, from_calculation = 0, 0, 0
@@ -273,9 +245,7 @@ def analyze(processed):
     
     question_type = ''
     where_from = ''
-    for p in processed:
-        p['question_id'] = hash_string(p['question'])
-        
+    for p in processed:        
         if p['question_id'] in used_question_id:
             repeated +=1
             continue
@@ -388,7 +358,7 @@ def generate_inputs(data):
         table_id = d['table_id']
         with open('{}/tables_tok/{}.json'.format(resource_path, table_id), 'r') as f:
             table = json.load(f)
-        headers = [cell[0][0] for cell in table['header']]
+        headers = [cell[0] for cell in table['header']]
 
         tmp = []
         labels = []
