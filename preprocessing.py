@@ -22,6 +22,9 @@ tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 resource_path = 'WikiTables-WithLinks/'
 best_threshold = 0.80
 
+def url2text(url):
+    return url.replace('/wiki/', '').replace('_', ' ')
+
 # Finding the longest substring
 def longestSubstringFinder(S,T):
     S = S.lower()
@@ -58,6 +61,7 @@ def longest_match_distance(str1s, str2s):
 
 def IR(data_entry):
     table_id = data_entry['table_id']
+    threshold = 0.95
 
     with open('{}/request_tok/{}.json'.format(resource_path, table_id)) as f:
         requested_documents = json.load(f)
@@ -90,10 +94,6 @@ def IR(data_entry):
         
     dist_match = longest_match_distance(qs, paras)[0]
     dist = pairwise_distances(q_feature, para_feature, 'cosine')[0]
-    
-    threshold = 0.95
-    tfidf_nodes = []
-    string_nodes = []
 
     # Find out the best matched passages based on distance
     min_dist = {}
@@ -104,16 +104,18 @@ def IR(data_entry):
             if d < tfidf_best_match[-1]:
                 tfidf_best_match = (k, para, d)
             if d <= best_threshold:
-                for content, locs in mapping_entity[k].items():
-                    for loc in locs:
-                        tfidf_nodes.append((content, loc, k, para, d))
+                for loc in mapping_entity[k]:
+                    tfidf_nodes.append((url2text(k), loc, k, para, d))
     
     if tfidf_best_match[0] != 'N/A':
         if tfidf_best_match[-1] > best_threshold:
-            for content, locs in mapping_entity[k].items():
-                for loc in locs:
-                    tfidf_nodes.append((content, loc, k, tfidf_best_match[1], tfidf_best_match[2]))
+            k = tfidf_best_match[0]
+            for loc in mapping_entity[k]:
+                tfidf_nodes.append((url2text(k), loc, k, tfidf_best_match[1], tfidf_best_match[2]))
 
+    # Find the best matched paragraph string
+    string_nodes = []
+    para_longest_string_match_dist = longest_match_distance(qs, paras)[0]
     min_dist = {}
     string_best_match = ('N/A', None, 1.)
     for k, para, d in zip(keys, paras, dist_match):
@@ -122,15 +124,14 @@ def IR(data_entry):
             if d < string_best_match[-1]:
                 string_best_match = (k, para, d)
             if d <= best_threshold:
-                for content, locs in mapping_entity[k].items():
-                    for loc in locs:
-                        string_nodes.append((content, loc, k, para, d))
+                for loc in mapping_entity[k]:
+                    string_nodes.append((url2text(k), loc, k, para, d))
                 
     if string_best_match[0] != 'N/A':
         if string_best_match[-1] > best_threshold:
-            for content, locs in mapping_entity[k].items():
-                for loc in locs:
-                    string_nodes.append((content, loc, k, string_best_match[1], string_best_match[2]))
+            k = string_best_match[0]
+            for loc in mapping_entity[k]:
+                string_nodes.append((url2text(k), loc, k, string_best_match[1], string_best_match[2]))
     
     data_entry['tf-idf'] = tfidf_nodes
     data_entry['string-overlap'] = string_nodes
@@ -149,9 +150,9 @@ def convert2num(string):
         return None
     
 def find_superlative(table_id, table):
-    if not os.path.exists('tables_tmp/{}.json'.format(table_id)):
+    if not os.path.exists('{}/tables_tmp/{}.json'.format(resource_path, table_id)):
         mapping = {}
-        headers = [_[0][0] for _ in table['header']]
+        headers = [_[0] for _ in table['header']]
         for j in range(len(table['header'])):
             mapping[headers[j]] = []
             activate_date_or_num = None
@@ -201,10 +202,10 @@ def find_superlative(table_id, table):
                     tmp_node[3] = 'latest'
                     nodes.append(tmp_node)
 
-        with open('tables_tmp/{}.json'.format(table_id), 'w') as f:
+        with open('{}/tables_tmp/{}.json'.format(resource_path, table_id), 'w') as f:
             json.dump(nodes, f)
     else:
-        with open('tables_tmp/{}.json'.format(table_id), 'r') as f:
+        with open('{}/tables_tmp/{}.json'.format(resource_path, table_id), 'r') as f:
             nodes = json.load(f)
 
     return nodes
@@ -229,11 +230,8 @@ def CELL(d):
 
     d['links'] = tmp_link
     if any([_ in d['question_postag'] for _ in triggers]):
-        try:
-            tmp = find_superlative(table_id, table)
-            d['links'] = d['links'] + tmp
-        except Exception:
-            print("failed with table {}".format(table_id))
+        tmp = find_superlative(table_id, table)
+        d['links'] = d['links'] + tmp
 
     return d
 
@@ -259,7 +257,7 @@ def analyze(processed):
             if len(p['answer-node']) > 1 and p['answer-node'][0][-1] == 'table':
                 with open('{}/tables_tok/{}.json'.format(resource_path, p['table_id']), 'r') as f:
                     table = json.load(f)
-                headers = [" , ".join(cell[0]) for cell in table['header']]
+                headers = [cell[0] for cell in table['header']]
                 potential_headers = set()
                 for h in headers:
                     if " " + h.lower() + " " in " " + p['question'].lower() + " ":
@@ -379,7 +377,7 @@ def prepare_stage1_data(data):
             table_id = d['table_id']
             with open('{}/tables_tok/{}.json'.format(resource_path, table_id), 'r') as f:
                 table = json.load(f)
-            headers = [" , ".join(cell[0]) for cell in table['header']]
+            headers = [cell[0] for cell in table['header']]
 
             answer_nodes = d['answer-node']
             answer_rows = set([_[1][0] for _ in answer_nodes])
@@ -408,7 +406,7 @@ def prepare_stage1_data(data):
                     labels.append(0)
             
             split.append({'question': d['question'], 'question_id': d['question_id'], 'table_id': d['table_id'], 
-                              'nodes': tmp, 'labels': labels})
+                          'nodes': tmp, 'labels': labels})
     
     return split
 
@@ -422,7 +420,7 @@ def prepare_stage2_data(d):
         with open('{}/request_tok/{}.json'.format(resource_path, table_id), 'r') as f:
             requested_document = json.load(f)
         
-        headers = [cell[0][0] for cell in table['header']]
+        headers = [cell[0] for cell in table['header']]
         
         answer_nodes = d['answer-node']
         answer_rows = {_[1][0]: _ for _ in answer_nodes}
@@ -437,32 +435,25 @@ def prepare_stage2_data(d):
                     labels = []
                     same_row = table['data'][i]
                     for j, cell in enumerate(same_row):
-                        for content, url in zip(cell[0], cell[1]):
-                            if len(content) > 0:
-                                if url:
-                                    doc = requested_document[url]
-                                    intro = filter_firstKsents(doc, 1)
-                                    target_nodes.append((content, (i, j), url, headers[j], intro))
-                                    if url == answer_rows[i][2]:
-                                        labels.append(1)
-                                    else:
-                                        labels.append(0)
-                                else:
-                                    target_nodes.append((content, (i, j), None, headers[j], ''))
-                                    if content == answer_rows[i][0]:
-                                        labels.append(1)
-                                    else:
-                                        labels.append(0)
-                                
-                        if len(cell[0]) > 1:
-                            content = ' , '.join(cell[0])
+                        content = cell[0]
+                        assert isinstance(content, str), content
+                        if len(content) > 0:
+                            target_nodes.append((content, (i, j), None, headers[j], ''))
+                            
                             if content == answer_rows[i][0]:
                                 labels.append(1)
                             else:
                                 labels.append(0)
-                                
-                            target_nodes.append((content, (i, j), None, headers[j], ''))
-                        
+
+                            for url in cell[1]:
+                                doc = requested_document[url]
+                                intro = filter_firstKsents(doc, 1)
+                                target_nodes.append((url2text(url), (i, j), url, headers[j], intro))
+                                if url == answer_rows[i][2]:
+                                    labels.append(1)
+                                else:
+                                    labels.append(0)
+
                     tmp['labels'] = labels
 
                     assert sum(labels) > 0, d['question_id']
@@ -476,79 +467,45 @@ def prepare_stage2_data(d):
 def prepare_stage3_data(data):
     split = []
     for d in data:
-        if d['where'] == 'passage':
-            table_id = d['table_id']
-            
-            with open('{}/request_tok/{}.json'.format(resource_path, table_id)) as f:
-                requested_documents = json.load(f)        
-            
-            #tmp = mapping.get(str(table_id), [])
-            
-            used = set()
-            for node in d['answer-node']:
-                if node[2] not in used:
-                    context = requested_documents[node[2]]
-                    context = 'Title : {} . '.format(node[0]) + context
+        table_id = d['table_id']
+
+        with open('{}/request_tok/{}.json'.format(resource_path, table_id)) as f:
+            requested_documents = json.load(f)        
                     
-                    orig_answer = d['answer-text']
-
-                    start = context.lower().find(orig_answer.lower())
-
-                    if start == -1:
-                        import pdb
-                        pdb.set_trace()
-
-                    while context[start].lower() != orig_answer[0].lower():
-                        start -= 1
-
-                    answer = context[start:start+len(orig_answer)]
-                    #assert(answer.lower() == orig_answer.lower(), "{} -> {}".format(answer, orig_answer))
-                    
-                    split.append({'context': context, 'title': table_id, 
-                                      'question': d['question'], 'question_id': d['question_id'],
-                                      'answers': [{'answer_start': start, 'text': answer}]})
-                    used.add(node[2])
-                else:
-                    continue
-        
-        if d['where'] == 'table':
-            table_id = d['table_id']
-            
-            with open('{}/request_tok/{}.json'.format(resource_path, table_id)) as f:
-                requested_documents = json.load(f)  
+        used = set()
+        for node in d['answer-node']:
+            if node[2] and node[2] not in used:
+                context = requested_documents[node[2]]
+                context = 'Title : {} . '.format(node[0]) + context
                 
-            used = set()
-            for node in d['answer-node']:
-                if node[2] and node[2] not in used:
-                    context = requested_documents[node[2]]
-                    context = 'Title : {} . '.format(node[0]) + context
-                    
-                    orig_answer = node[0]
+                orig_answer = d['answer-text']
 
-                    start = context.lower().find(orig_answer.lower())
+                start = context.lower().find(orig_answer.lower())
 
-                    if start == -1:
-                        import pdb
-                        pdb.set_trace()
+                if start == -1:
+                    import pdb
+                    pdb.set_trace()
 
-                    while context[start].lower() != orig_answer[0].lower():
-                        start -= 1
-                        
-                    answer = context[start:start+len(orig_answer)]
-                    
-                    split.append({'context': context, 'title': table_id, 
-                                      'question': d['question'], 'question_id': d['question_id'],
-                                      'answers': [{'answer_start': start, 'text': answer}]})
-                    used.add(node[2])
-                else:
-                    continue
+                while context[start].lower() != orig_answer[0].lower():
+                    start -= 1
+
+                answer = context[start:start+len(orig_answer)]
+                #assert(answer.lower() == orig_answer.lower(), "{} -> {}".format(answer, orig_answer))
+                
+                split.append({'context': context, 'title': table_id, 
+                              'question': d['question'], 'question_id': d['question_id'],
+                              'answers': [{'answer_start': start, 'text': answer}]})
+                used.add(node[2])
+            else:
+                continue
+        
     return split
 
 if __name__ == "__main__":
-    with open('released_data/train.json', 'r') as f:
+    with open('released_data/train.traced.json', 'r') as f:
         train_data = json.load(f)
 
-    with open('released_data/dev.json', 'r') as f:
+    with open('released_data/dev.traced.json', 'r') as f:
         dev_data = json.load(f) 
 
     with open('released_data/test.json', 'r') as f:

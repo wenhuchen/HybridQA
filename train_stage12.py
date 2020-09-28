@@ -49,6 +49,9 @@ def set_seed(args):
     if args.n_gpu > 0:
         torch.cuda.manual_seed_all(args.seed)
 
+def url2text(url):
+    return url.replace('/wiki/', '').replace('_', ' ')
+
 def generate_target_nodes(path, d):
     table_id = d['table_id']
     with open('{}/tables_tok/{}.json'.format(path, table_id), 'r') as f:
@@ -57,7 +60,7 @@ def generate_target_nodes(path, d):
     with open('{}/request_tok/{}.json'.format(path, table_id), 'r') as f:
         requested_document = json.load(f)
 
-    headers = [cell[0][0] for cell in table['header']]
+    headers = [cell[0] for cell in table['header']]
 
     results = []
     for node in d['nodes']:
@@ -67,18 +70,14 @@ def generate_target_nodes(path, d):
         target_nodes = []
         same_row = table['data'][i]
         for j, cell in enumerate(same_row):
-            for content, url in zip(cell[0], cell[1]):
-                if len(content) > 0:
-                    if url:
-                        doc = requested_document[url]
-                        intro = filter_firstKsents(doc, 1)
-                        target_nodes.append((content, (i, j), url, headers[j], intro))
-                    else:
-                        target_nodes.append((content, (i, j), None, headers[j], ''))
-                    
-            if len(cell[0]) > 1:
-                content = ' , '.join(cell[0])
+            content = cell[0]
+            assert isinstance(content, str)
+            if len(content) > 0:
                 target_nodes.append((content, (i, j), None, headers[j], ''))
+                for url in cell[1]:
+                    doc = requested_document[url]
+                    intro = filter_firstKsents(doc, 1)
+                    target_nodes.append((url2text(url), (i, j), url, headers[j], intro))
 
         tmp['target'] = target_nodes
         results.append(tmp)
@@ -129,6 +128,8 @@ class Stage12Dataset(Dataset):
                 if self.retain_label:
                     d['labels'] = d['labels'][:16]
 
+            headers = [_[0] for _ in table['header']]
+
             # Node -> 0: content, 1: location, 2: url, 3: description, 4: confidence
             for node in d['nodes']:
                 coordinates = node[1]
@@ -149,13 +150,9 @@ class Stage12Dataset(Dataset):
                 # Neighbors of the linked enitty
                 tmp = ''
                 for i, cell in enumerate(table['data'][coordinates[0]]):
-                    for _ in cell[0]:
-                        if i != coordinates[1]:
-                            if _ == "":
-                                _ = 'unknown'
-                            tmp += '{} is {} ; '.format(table['header'][i][0][0], _)
-                        else:
-                            continue
+                    assert isinstance(cell[0], str)
+                    if i != coordinates[1]:
+                        tmp += '{} is {} ; '.format(headers[i], cell[0])
                 
                 tmp = tmp[:-3] + " ."
                 part3 = self.tokenizer.tokenize(tmp)
@@ -515,7 +512,7 @@ def main():
     if args.do_train:
         train_data = readGZip(args.train_file)
         dataset = Stage12Dataset(args.resource_dir, train_data, tokenizer, args.max_seq_length, args.option, retain_label=True, shuffle=True)
-        loader = DataLoader(dataset, batch_size=None, batch_sampler=None, num_workers=8, shuffle=False, pin_memory=True)
+        loader = DataLoader(dataset, batch_size=None, batch_sampler=None, num_workers=0, shuffle=False, pin_memory=True)
 
         tb_writer = SummaryWriter(log_dir=args.output_dir)
         # Prepare optimizer and schedule (linear warmup and decay)
