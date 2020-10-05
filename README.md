@@ -32,19 +32,19 @@ unzip preprocessed_data.zip
 # Reproduce the reported results
 ## Download the trained bert-base model from Amazon S3:
 ```
-wget https://hybridqa.s3-us-west-2.amazonaws.com/BERT-base-uncased.zip
+wget https://hybridqa.s3-us-west-2.amazonaws.com/models.zip
 unzip BERT-base-uncased.zip
 ```
 It will download and generate folder stage1/stage2/stage3/
 
 ## Using pretrained model to run stage1/stage2:
 ```
-CUDA_VISIBLE_DEVICES=0 python train_stage12.py --stage1_model stage1/2020_04_09_21_42_39/checkpoint-epoch2/ --stage2_model stage2/2020_04_09_21_44_49/checkpoint-epoch1 --do_lower_case --predict_file preprocessed_data/dev_inputs.json --do_eval --option stage12
+CUDA_VISIBLE_DEVICES=0 python train_stage12.py --stage1_model stage1/2020_10_03_22_47_34/checkpoint-epoch2 --stage2_model stage2/2020_10_03_22_50_31/checkpoint-epoch2/ --do_lower_case --predict_file preprocessed_data/dev_inputs.json --do_eval --option stage12 --model_name_or_path  bert-large-uncased
 ```
 This command generates a intermediate result file
 ## Using pretrained model to run stage3:
 ```
-CUDA_VISIBLE_DEVICES=0 python train_stage3.py --model_name_or_path stage3/2020_04_09_21_45_27/checkpoint-epoch3 --do_stage3   --do_lower_case  --predict_file predictions.intermediate.json --per_gpu_train_batch_size 12  --max_seq_length 384   --doc_stride 128 --threads 8
+CUDA_VISIBLE_DEVICES=0 python train_stage3.py --model_name_or_path stage3/2020_10_03_22_51_12/checkpoint-epoch3/ --do_stage3   --do_lower_case  --predict_file predictions.intermediate.json --per_gpu_train_batch_size 12  --max_seq_length 384   --doc_stride 128 --threads 8
 ```
 This command generates the prediction file
 ## Compute the score
@@ -59,11 +59,6 @@ Running training command for stage1 using BERT-base-uncased as follows:
 ```
 CUDA_VISIBLE_DEVICES=0 python train_stage12.py --do_lower_case --do_train --train_file preprocessed_data/stage1_training_data.json --learning_rate 2e-6 --option stage1 --num_train_epochs 3.0
 ```
-Or Running training command for stage1 using BERT-base-cased as follows:
-```
-CUDA_VISIBLE_DEVICES=0 python train_stage12.py --model_name_or_path bert-base-cased --do_train --train_file preprocessed_data/stage1_training_data.json --learning_rate 2e-6 --option stage1 --num_train_epochs 3.0
-```
-
 Or Running training command for stage1 using BERT-large-uncased as follows:
 ```
 CUDA_VISIBLE_DEVICES=0 python train_stage12.py --model_name_or_path bert-large-uncased --do_train --train_file preprocessed_data/stage1_training_data.json --learning_rate 2e-6 --option stage1 --num_train_epochs 3.0
@@ -125,6 +120,18 @@ We host CodaLab challenge in [HybridQA Compeition](https://competitions.codalab.
 ]
 ```
 The reported scores are EM and F1.
+
+# Citation
+If you find this project useful, please use the following format to cite the paper:
+```
+@article{chen2020hybridqa,
+  title={HybridQA: A Dataset of Multi-Hop Question Answering over Tabular and Textual Data},
+  author={Chen, Wenhu and Zha, Hanwen and Chen, Zhiyu and Xiong, Wenhan and Wang, Hong and Wang, William},
+  journal={Findings of EMNLP 2020},
+  year={2020}
+}
+```
+
 
 # Miscellaneous
 If you have any question about the dataset and code, feel free to raise a github issue or shoot me an email. Thanks!
