@@ -96,6 +96,7 @@ def IR(data_entry):
     dist = pairwise_distances(q_feature, para_feature, 'cosine')[0]
 
     # Find out the best matched passages based on distance
+    tfidf_nodes = []
     min_dist = {}
     tfidf_best_match = ('N/A', None, 1.)
     for k, para, d in zip(keys, paras, dist):
