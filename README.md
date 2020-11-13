@@ -128,7 +128,18 @@ We host CodaLab challenge in [HybridQA Competition](https://competitions.codalab
 ```
 The reported scores are EM and F1.
 
-# Citation
+# Recent Papers
+
+
+**Model**                                     | **Reference**                                                             | **Dev-EM** | **Dev-F1** | **Test-EM** | **Test-F1** | 
+----------|-----------------------------------|---------------------------------------------------------------------------|---------|----------|------------------|
+HYBRIDER      | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |   43.5  | 50.6 |    42.2         |  49.9
+HYBRIDER-Large     | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |  44.0  |  50.7    |     43.8     |      50.6     |
+Unsupervised-QG | [Pan et al. (2019)](https://arxiv.org/abs/2010.12623)           |    25.7   |  30.5   |   -        |       -       |
+
+
+
+# Referenece
 If you find this project useful, please use the following format to cite the paper:
 ```
 @article{chen2020hybridqa,
