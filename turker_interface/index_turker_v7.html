@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" />
+<style type="text/css">#collapseTrigger{ color:#fff; display: block; text-decoration: none; } #submitButton{ white-space: normal; } .image{ margin-bottom: 15px; }
+</style>
+
+<section class="container" id="Survey"><!-- Instructions -->
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="panel panel-primary">
+            <a class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Job Instructions (Hybrid Question Answering in Table with Background Information): </strong></a>
+            
+            <div class="panel-body" id="instructionBody">
+                Your job is to (1) read a table together with the background information over the hyperlinked <strong>entities (blue  text)</strong> by hovering your mouse over them, (2) ask a <strong>hybrid question</strong>, which requires both the table and the background information to answer, (3) provide the <strong>correct answer</strong>:<br>
+                
+                <h3>
+                    Read the Example Table and the Background Information of entities:
+                </h3>
+                
+                    <div><a target="_blank" id='List of flag bearers for Myanmar at the Olympics' href="https://en.wikipedia.org/wiki/List_of_flag_bearers_for_Myanmar_at_the_Olympics">List of flag bearers for Myanmar at the Olympics</a>: This is a list of flag bearers who have represented Burma and Myanmar at the Olympics.
+ Flag bearers carry the national flag of their country at the opening ceremony of the Olympic Games.
+                        <pre class="default prettyprint prettyprinted" id="extra"><strong>Background Information Board</strong>: Hover your mouse over the entities in the table to understand their background</pre></div>
+                    <div>
+                        <table class='wikitable'><tr><th>Name</th><th>Event year</th><th>Season</th><th>Flag bearer</th></tr> <tr><td>XXXI</td><td><a onmouseover='showMessage(this)' id='/wiki/2016_Summer_Olympics' href='#extra'> 2016</a></td><td>Summer</td><td><a onmouseover='showMessage(this)' id='/wiki/Yan_Naing_Soe' href='#extra'> Yan Naing Soe</a></td></tr> <tr><td>XXX</td><td><a onmouseover='showMessage(this)' id='/wiki/2012_Summer_Olympics' href='#extra'> 2012</a></td><td>Summer</td><td><a onmouseover='showMessage(this)' id='/wiki/Zaw_Win_Thet' href='#extra'> Zaw Win Thet</a></td></tr> <tr><td>XXIX</td><td><a onmouseover='showMessage(this)' id='/wiki/2008_Summer_Olympics' href='#extra2'> 2008</a></td><td>Summer</td><td><a onmouseover='showMessage(this)' id='/wiki/Phone_Myint_Tayzar' href='#extra'> Phone Myint Tayzar</a></td></tr> <tr><td>XXVIII</td><td><a onmouseover='showMessage(this)' id='/wiki/2004_Summer_Olympics' href='#extra'> 2004</a></td><td>Summer</td><td>Hla Win U</td></tr> <tr><td>XXVII</td><td><a onmouseover='showMessage(this)' id='/wiki/2000_Summer_Olympics' href='#extra'> 2000</a></td><td>Summer</td><td><a onmouseover='showMessage(this)' id='/wiki/Maung_Maung_Nge' href='#extra'> Maung Maung Nge</a></td></tr> <tr><td>XXVI</td><td><a onmouseover='showMessage(this)' id='/wiki/1996_Summer_Olympics' href='#extra'> 1996</a></td><td>Summer</td><td><a onmouseover='showMessage(this)' id='/wiki/Soe_Myint' href='#extra'> Soe Myint</a></td></tr> <tr><td>XXIII</td><td><a onmouseover='showMessage(this)' id='/wiki/1984_Summer_Olympics' href='#extra'> 1984</a></td><td>Summer</td><td><a onmouseover='showMessage(this)' id='/wiki/Latt_Zaw' href='#extra'> Latt Zaw</a></td></tr> <tr><td>XX</td><td><a onmouseover='showMessage(this)' id='/wiki/1972_Summer_Olympics' href='#extra'> 1972</a></td><td>Summer</td><td><a onmouseover='showMessage(this)' id='/wiki/Win_Maung_(footballer)' href='#extra'> Win Maung</a></td></tr></table>
+                    </div>
+                
+                <h3>
+                    Requirements:
+                </h3>                
+                <font color='red'>Requirements I</font>: the question is supposed to be involve <strong>hybrid information</strong> to answer: <br>
+                1) <strong>it involves the relational information expressed in the table</strong>, for example, jump between columns, maximum/minimum across rows, comparison over a field, counting, aggregation, etc. Broadly speaking, the table in at least one step to answer your question. See following example for more details.<br>
+                2) <strong>it also involves information in the background text</strong>, like when the players are born, what they achieved in their career, etc.<br>
+                <font color='red'>Requirements II</font>: Please ask questions whose answers can only be found in the background passage. The answer should be a <strong>minimum span from the passage</strong> without modification. Do not ask questions whose answers are seen in the table <font color='red'>(this requirement is specific to Version 2.1)</font>. When copying the answer, do not use a half word, like "3" from "3-time winner".
+                <br>
+                <font color='red'>Requirements III</font>: please add some <strong>language variance</strong> to the <strong>questions</strong> to slightly increase its difficulty, i.e. rephrase the original expression from the passage/table using synonyms, abbreviation, reordering, paraphrasing, etc: <br>
+                1) for examples like replacing "U.S" with "America", replacing "University" with "school", replacing "1013" with "over 1000", replacing "January" with "Jan", replacing "president" with "chairman", etc. <br>
+                2) if you are referring to "Zaw Win Thet", intead of using "the flag bearer who competed in the <strong>400 m event</strong> at the 2012 Summer Olympics" (the original expression the background passage), you can rephrase it like "the Myanmar flag carrier who was a participant in 2012 <strong>track-and-field event</strong>."
+                <h3>
+                    Good Examples of Hybrid Question Answer Pairs:
+                </h3>
+                These are diverse QA examples, we added some short explanation to help you understand the principles:
+                <p>
+                    - <strong>Q</strong>: How many athletes participate in the summer Olympic with Myanmar canoe player as its flag carrier?  <strong>A</strong>: 10,942 <br>
+                    Loigcal chain: Use the passage of "Phone Myint Tayzar" to identify "Myanmar canoer", use the table to know that "Phone Myint Tayzar" took part in Olympic "2008" (same row), finally use the passage of "2008" to find the answer.<br>
+                    - <strong>Q</strong>: Which session does the bearer of the Olympic game happenning after 2014 take part in?  <strong>A</strong>: Parade of Nations <br>
+                    Loigcal chain: Use the <strong>comparison</strong> (>2014) in the table over the event year to identify the Olympic is in "2016", then use table to know "Yan Naing Soe" took part in "2016", finally, read the background passage to understand that it takes part in the "Parade of Nations" session. <br>       
+                    - <strong>Q</strong>: For the 2016 and 2012 flag bearer, which district is the younger one from? <strong>A</strong>: Pathein District <br>
+                    Loigcal chain: Yan Naing Soe was born in 1979, the other is 1991, so "Zaw Win Thet" is younger. <br>
+                    - <strong>Q</strong>: For the earliest summer Olympic event, when was the flag bearer born? <strong>A</strong>: 12 May 1949 <br>
+                    Loigcal chain: Use the <strong>minimum</strong> operation in the table to know the event is in "1972", use the table to know "Win Maung" took part in that event, finally, use the passage of "Win Maung" to know the answer.<br>
+                    - <strong>Q</strong>: When was the demise of the 1996 flag bearer? <strong>A</strong>: 20 May 2010 <br>
+                    Loigcal chain: Use the passage of "1984" to find that the "boycotted" event was held in "1984", then use the table to know Latt Zaw partipated in 1984 Olympic (same row), finally locate the answer in the passage. <font color='green'>(we use "demise" by to replace "die" in the original passage to increase language variance)</font><br>
+                    - <strong>Q</strong>: Which Olympic's opening ceremony did the 1991-born player take part in, is it London 2012 or Beijing 2008? <strong>A</strong>: Beijing 2008 <br>
+                    Logical chain: Use the passage to know 1991-born player is "Zaw Win Thet", he took part in the Beijing XXX Olympic as indicated by the table. <br>
+                    - <strong>Q</strong>: Where did the oldest flag bearer take part in the Olympic event? <strong>A</strong>: Atlanta, Georgia, U.S <br>
+                    Loigcal chain: Read different passages of flag bearer to know that the oldest flag bearer is "Soe Myint", then use the table to know he take part in "1996" Atlanta event.<br>
+                    - <strong>Q</strong>: Who was the flag bearer defeated by in the event which was boycotted by 14 coutries? <strong>A</strong>: Christopher Ossai <br>
+                    Loigcal chain: Use the passage of "1984" to find that the "boycotted" event was held in "1984", then use the table to know Latt Zaw partipated in 1984 Olympic (same row), finally locate the answer in the passage. <font color='green'>(we use "defeated" by to replace "lost to" in the original passage to increase language variance)</font><br>
+                    - <strong>Q</strong>: For the XXX Olympic and XXIX Olympic in the table, the one with more participants is held in which place? <strong>A</strong>: Beijing <br>
+                    Loigcal chain: XXX has 10,768 while XXIX has 10,942, therefore XXIX has more athletes and held in Beijing<br>
+                </p>
+                
+                <h3>
+                    Bad Examples:
+                </h3>
+                These are rejected examples, which are not hybrid, only requiring passages, or table to answer:
+                <p>
+                    - <strong>Q</strong>: Who competed at the 2016 Summer Olympics in the men's 100 kg event ?  <strong>A</strong>: Yan Naing Soe <br> Explanation: the answer should not come from the table, it should come from a certain passage. <br>
+                    - <strong>Q</strong>: When was Summer Olympic held in which Yan Naing Soe took the role of flag bearer ? <strong>A</strong>: 2016 <br> Explanation: You do not need to understand background passage, the answer can be found by simply reading table.. <br>
+                    - <strong>Q</strong>: Yan Naing Soe is flag bearer in which year? <strong>A</strong>: 	2016 <br>Explanation: This is not a natural English sentence, you should make it as natural and smooth as possible.<br>
+                    - <strong>Q</strong>: Which sport event does Yan Naing Soe participate? <strong>A</strong>: judoka <br>
+                    Explanation: You do not need to undersatnd the table to answer the question, you can just click on the passage of "Yan Naing Soe" to answer the question. <br>
+                    - <strong>Q</strong>: Who is from Myanmar? <strong>A</strong>: Phone Myint Tayzar <br> Explanation: The answer is relevant to the background passages. <br>
+                    - <strong>Q</strong>: What is the earliest year of the Olympic event? <strong>A</strong>: 1972 <br>
+                    Explanation: The answer is relevant to the background passages. <br>
+                    - <strong>Q</strong>: Where is Myint Tayzar Phone from? <strong>A</strong>: Myanmar<br>
+                    - <strong>Q</strong>: Who competes in the 400 m event at 2012 Summer Olympic? <strong>A</strong>: Zaw Win Thet<br>
+                </p>
+
+                <h3>
+                     Hints:
+                </h3>
+                <p>               
+                    1. You are not restricted to the question templates listed in the instruction, as long as the question meets the two criteria and is reasonably difficult. It will be accepted. <br>
+                    2. Please write as diverse questions as possible, do not raise multiple questions only regarding a certain part of the table. <br> 
+                    3. The question should be fluent and natural, you are encouraged to rephrase expression in the given text. <br>
+                </p>
+            </div>
+            
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Based on the following table, write 6 question-answer pairs along with the needed evidence passages.<br>
+            </div>
+            <div class="panel-body" id="instructionBody">
+            <div id='title'></div>
+            <pre class="default prettyprint prettyprinted" id="extra2"><strong>Background Information Board</strong>: Hover your mouse over the entities in the table to understand their background</pre>
+            <div id='url'>10799</div>
+            Please raise a question and answer it:
+            <input name="d1" class="form-control" type="text" placeholder="Please type your question here" required/>
+            <input name="a1" class="form-control" type="text" placeholder="Please type your answer for the above question" required/>
+            Please raise a question and answer it:
+            <input name="d2" class="form-control" type="text" placeholder="Please type your question here" required/>
+            <input name="a2" class="form-control" type="text" placeholder="Please type your answer for the above question" required/>
+            Please raise a question and answer it:
+            <input name="d3" class="form-control" type="text" placeholder="Please type your question here" required/>
+            <input name="a3" class="form-control" type="text" placeholder="Please type your answer for the above question" required/>
+            Please raise a question and answer it:
+            <input name="d4" class="form-control" type="text" placeholder="Please type your question here" required/>
+            <input name="a4" class="form-control" type="text" placeholder="Please type your answer for the above question" required/>
+            Please raise a question and answer it:
+            <input name="d5" class="form-control" type="text" placeholder="Please type your question here" required/>
+            <input name="a5" class="form-control" type="text" placeholder="Please type your answer for the above question" required/>
+            Please raise a question and answer it:
+            <input name="d6" class="form-control" type="text" placeholder="Please type your question here" required/>
+            <input name="a6" class="form-control" type="text" placeholder="Please type your answer for the above question" required/>            
+            <br>
+            <button onclick="verify()" style='align:center' type="button" text-align="center">click to verify whether your answer is a text span from a passage</button>
+            <div id='hint'></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</section>
+
+<script type="text/javascript">
+    jQuery.ajaxSetup({async:false});
+    
+    var example_requests;
+    var global_requests;
+    var table_cells = [];
+    $(document).ready(function(){
+        var table_content = "";
+        var cur = $(`#url`).text() 
+        var table_url = 'https://raw.githubusercontent.com/wenhuchen/WikiTables-WithLinks/master/tables/' + cur + '.json'
+        var table_content = ''
+        
+        var request_cur = 'https://raw.githubusercontent.com/wenhuchen/WikiTables-WithLinks/master/request/' + cur + '.json'
+        var example_cur = 'https://raw.githubusercontent.com/wenhuchen/WikiTables-WithLinks/master/request/example.json'
+        
+        $.get(example_cur, function(data){
+            example_requests = JSON.parse(data);
+        }, 'text').fail(function() {
+            console.log("requesting text failed");
+        });
+        
+        $.get(request_cur, function(data){
+            global_requests = JSON.parse(data);
+        }, 'text').fail(function() {
+            console.log("requesting text failed");
+        });
+        
+        $.get(table_url, function(data){
+            var obj = JSON.parse(data)
+            var new_data = JsonToTable(obj);
+            table_content += new_data;
+            
+            //console.log(table_content);
+            //var page = obj['title'].split(' ').join('_');
+            //var text = httpGet(format('/wiki/{0}', page));
+            //$('#extra2').html(format('<b>{0}</b>: {1}', obj['title'], text));
+        }, 'text').fail(function() {
+            console.log("requesting table failed");
+        });
+        
+        $(`#url`).html(table_content);
+        
+
+    });
+    
+    function format (fmtstr) {
+        var args = Array.prototype.slice.call(arguments, 1);
+            return fmtstr.replace(/\{(\d+)\}/g, function (match, index) {
+            return args[index];
+        });
+    }
+    
+    function httpGet(theUrl)
+    {
+        theUrl = decodeURIComponent(theUrl);
+        return global_requests[theUrl];
+    }
+    
+    function JsonToTable(data){
+        var title = format('<a target="_blank" id="{0}" href="{1}"> {2} </a>', data['title'], data['url'], data['title'])
+        //var page = data['title'].split(' ').join('_');
+        //var text = httpGet(format('/wiki/{0}', page));
+        $('#title').html('Title: ' + title)
+        
+        var output = []
+        var tmp = '<tr>';
+        for (i = 0; i < data['header'].length; i++){
+            tmp += '<th>';
+            for(j = 0; j < data['header'][i][0].length; j++){
+                if (data['header'][i][1][j] == null){
+                    tmp += data['header'][i][0][j];
+                }
+                else{
+                    tmp += format('<a onmouseover="showMessage2(this)" id="{0}" href="{1}"> {2}</a>', data['header'][i][1][j], '#extra2', data['header'][i][0][j]);
+                }
+                if (j < data['header'][i][1].length - 1) {
+                    tmp += ', ';
+                }
+            }
+            tmp += "</th>";
+        }
+        tmp += '</tr>'        
+        output.push(tmp);
+        
+        // loop over the rows
+        for (i = 0; i < data['data'].length; i++){
+            tmp = '<tr>'
+            for (j = 0; j < data['data'][i].length; j++){
+                tmp += '<td>';
+                for (k = 0; k < data['data'][i][j][0].length; k++){
+                    if (data['data'][i][j][1][k] == null){
+                        tmp += data['data'][i][j][0][k];
+                    }
+                    else{
+                        tmp += format('<a onmouseover="showMessage2(this)" id="{0}" href="{1}"> {2}</a>', data['data'][i][j][1][k], '#extra2', data['data'][i][j][0][k]);
+                    }
+                    if (k < data['data'][i][j][0].length - 1) {
+                        tmp += ', ';
+                    }
+                    table_cells.push(data['data'][i][j][0][k])
+                }
+                tmp += '</td>';
+            }
+            tmp += '</tr>';
+            output.push(tmp)
+        }
+        
+        output = "<table class='wikitable'>" + output.join(" ") + "</table>";
+        
+        return output
+    }
+    
+    function showMessage(hyperlink){
+        var theUrl = hyperlink.id;
+        var text = example_requests[decodeURIComponent(theUrl)];
+        var title = hyperlink.text.trim();
+
+        $('#extra').html(format("<b>{0}</b>: {1}", title, text));
+    }
+    
+    function showMessage2(hyperlink){
+        var theUrl = hyperlink.id;
+        var text = global_requests[decodeURIComponent(theUrl)];
+        var title = hyperlink.text.trim();
+        
+        $('#extra2').html(format("<b>{0}</b>: {1}", title, text));
+    }
+    
+    function verify(){
+        var ContainFalse = false;
+        for (i=1; i<=6; i++){
+            var jq_request = '[name=a' + i + ']';
+            var answer = $(jq_request).val();
+            if(!searchFor(answer) | answer.length == 0){
+                $(jq_request)[0].setCustomValidity("Invalid field.");
+                ContainFalse = true;
+            }
+            else{
+                $(jq_request)[0].setCustomValidity("");
+            }
+        }
+        if (ContainFalse){
+            $('#hint').html("<font color='red'>Some answers [red] cannot be traced back to any span in the passage, please do not modify them!</font>")
+        }
+        else {
+            $('#hint').html("<font color='green'>The answer is successfully verified!</font>");
+        }
+    }
+    
+    function include(string1, string2, strong){
+        string1 = string1.toLowerCase();
+        string2 = string2.toLowerCase();        
+        if (strong){
+            string1 = " " + string1 + " ";
+            string2 = " " + string2 + " ";            
+        }
+        return string1.includes(string2)
+    }
+    
+    function searchFor(text){
+        //if(table_cells.includes(text)){
+        //    return true;
+        //}
+        //else{
+        var tmp = [];
+        for (var key in global_requests) {
+            if (include(global_requests[key], text, true)){
+                tmp.push(key);
+            }
+        }
+        if (tmp.length == 0){
+            console.log("Not Found " + text);
+            return false;
+        }
+        else{
+            console.log("Found " + text);
+            return true;
+        }
+        //}
+    }
+    
+</script>
+
+<style>
+    table, th {
+        border: 1px solid black;
+        padding: 5px;
+        color: black;
+        font-family: verdana;
+        background-color: lightyellow;
+        font-size: smaller;
+    }
+    td {
+        border: 1px solid black;
+        padding: 5px;
+        color: black;
+        font-family: verdana;
+        background-color: #F7F8FA;
+        font-size: smaller;
+    }
+    .panel {
+        width: 100%;
+        display: inline-block;
+        background: white;
+    }
+    p {
+      display: block;
+      margin-top: 0em;
+      margin-bottom: 1em;
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+    pre {
+      line-height: 2.5ex;
+      height:180px;
+      overflow-y:scroll;
+    }
+    input.form-control:valid {
+        background: white;
+    }
+    input.form-control:invalid {
+        background: #ffe6e6;
+    }
+</style>
