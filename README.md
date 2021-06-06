@@ -131,11 +131,11 @@ The reported scores are EM and F1.
 # Recent Papers
 
 
-**Model**                                     | **Reference**                                                             | **Dev-EM** | **Dev-F1** | **Test-EM** | **Test-F1** | 
+**Model**                                     |  **Organization**  |**Reference**                                                             | **Dev-EM** | **Dev-F1** | **Test-EM** | **Test-F1** | 
 ----------|-----------------------------------|---------------------------------------------------------------------------|---------|----------|------------------|
-HYBRIDER      | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |   43.5  | 50.6 |    42.2         |  49.9
-HYBRIDER-Large     | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |  44.0  |  50.7    |     43.8     |      50.6     |
-Unsupervised-QG | [Pan et al. (2020)](https://arxiv.org/abs/2010.12623)           |    25.7   |  30.5   |   -        |       -       |
+HYBRIDER      | UCSB | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |   43.5  | 50.6 |    42.2         |  49.9
+HYBRIDER-Large   |  UCSB | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |  44.0  |  50.7    |     43.8     |      50.6     |
+Unsupervised-QG | NUS&UCSB |  [Pan et al. (2020)](https://arxiv.org/abs/2010.12623)           |    25.7   |  30.5   |   -        |       -       |
 
 
 
