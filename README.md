@@ -133,10 +133,12 @@ The reported scores are EM and F1.
 
 **Model**                                     |  **Organization**  |**Reference**                                                             | **Dev-EM** | **Dev-F1** | **Test-EM** | **Test-F1** | 
 ----------|---------------------------|-----------------------------------|---------------------------------------------------------------------------|---------|----------|------------------|
-DocHopper        | CMU       | [Sun et al. (2021)](https://arxiv.org/abs/2106.00200)                     |   47.7  | 55.0 |  46.3  | 53.3   |
-HYBRIDER         | UCSB      | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |   43.5  | 50.6 |    42.2         |  49.9
-HYBRIDER-Large   | UCSB      | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |  44.0  |  50.7    |     43.8     |      50.6     |
-Unsupervised-QG  | NUS\&UCSB |  [Pan et al. (2020)](https://arxiv.org/abs/2010.12623)           |    25.7   |  30.5   |   -        |       -       |
+POINTR + MATE    | Google    | [Eisenschlos et al. (2021)](https://arxiv.org/pdf/2109.04312.pdf)         |   63.3  | 70.8 |  62.7  | 70.0 |
+POINTR + TAPAS   | Google    | [Eisenschlos et al. (2021)](https://arxiv.org/pdf/2109.04312.pdf)         |   63.4  | 71.0 |  62.8  | 70.2 |
+DocHopper        | CMU       | [Sun et al. (2021)](https://arxiv.org/abs/2106.00200)                     |   47.7  | 55.0 |  46.3  | 53.3 |
+HYBRIDER         | UCSB      | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |   43.5  | 50.6 |  42.2  | 49.9 |
+HYBRIDER-Large   | UCSB      | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |  44.0   | 50.7 |  43.8  | 50.6 |
+Unsupervised-QG  | NUS\&UCSB |  [Pan et al. (2020)](https://arxiv.org/abs/2010.12623)                    |    25.7 | 30.5 |   -    |  -   |
 
 
 
