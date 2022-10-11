@@ -113,7 +113,7 @@ python evaluate_script.py predictions.json released_data/dev_reference.json
 ```
 
 # CodaLab Evaluation
-We host CodaLab challenge in [HybridQA Competition](https://competitions.codalab.org/competitions/24420), you should submit your results to the competition to obtain your testing score. The submitted file should first be named "test_answers.json" and then zipped. The required format of the submission file is described as follows:
+We host CodaLab challenge in [HybridQA Competition](https://codalab.lisn.upsaclay.fr/competitions/7979), you should submit your results to the competition to obtain your testing score. The submitted file should first be named "test_answers.json" and then zipped. The required format of the submission file is described as follows:
 ```
 [
   {
