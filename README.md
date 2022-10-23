@@ -133,6 +133,7 @@ The reported scores are EM and F1.
 
 **Model**                                     |  **Organization**  |**Reference**                                                             | **Dev-EM** | **Dev-F1** | **Test-EM** | **Test-F1** | 
 ----------|---------------------------|-----------------------------------|---------------------------------------------------------------------------|---------|----------|------------------|
+UL-20B    | Google    | [Tay et al. (2022)](https://arxiv.org/abs/2205.05131)         |   -  | - |  61.0  | - |
 MITQA    | IBM & IIT   | [Kumar et al. (2021)](https://arxiv.org/pdf/2112.07337.pdf)         |   65.5  | 72.7 |  64.3  | 71.9 |
 POINTR + MATE    | Google    | [Eisenschlos et al. (2021)](https://arxiv.org/pdf/2109.04312.pdf)         |   63.3  | 70.8 |  62.7  | 70.0 |
 POINTR + TAPAS   | Google    | [Eisenschlos et al. (2021)](https://arxiv.org/pdf/2109.04312.pdf)         |   63.4  | 71.0 |  62.8  | 70.2 |
