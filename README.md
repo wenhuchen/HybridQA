@@ -137,7 +137,7 @@ UL-20B    | Google    | [Tay et al. (2022)](https://arxiv.org/abs/2205.05131)   
 MITQA    | IBM & IIT   | [Kumar et al. (2021)](https://arxiv.org/pdf/2112.07337.pdf)         |   65.5  | 72.7 |  64.3  | 71.9 |
 POINTR + MATE    | Google    | [Eisenschlos et al. (2021)](https://arxiv.org/pdf/2109.04312.pdf)         |   63.3  | 70.8 |  62.7  | 70.0 |
 POINTR + TAPAS   | Google    | [Eisenschlos et al. (2021)](https://arxiv.org/pdf/2109.04312.pdf)         |   63.4  | 71.0 |  62.8  | 70.2 |
-MuGER            | JD AI Research | [Wang et al. (2022)](https://arxiv.org/abs/2210.10350)               | 57.1    | 67.3 | 56.3   |  66.2 |
+MuGER<sup>2</sup>            | JD AI Research | [Wang et al. (2022)](https://arxiv.org/abs/2210.10350)               | 57.1    | 67.3 | 56.3   |  66.2 |
 DocHopper        | CMU       | [Sun et al. (2021)](https://arxiv.org/abs/2106.00200)                     |   47.7  | 55.0 |  46.3  | 53.3 |
 HYBRIDER         | UCSB      | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |   43.5  | 50.6 |  42.2  | 49.9 |
 HYBRIDER-Large   | UCSB      | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |  44.0   | 50.7 |  43.8  | 50.6 |
