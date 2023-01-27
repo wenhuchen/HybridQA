@@ -133,11 +133,12 @@ The reported scores are EM and F1.
 
 **Model**                                     |  **Organization**  |**Reference**                                                             | **Dev-EM** | **Dev-F1** | **Test-EM** | **Test-F1** | 
 ----------|---------------------------|-----------------------------------|---------------------------------------------------------------------------|---------|----------|------------------|
-UL-20B    | Google    | [Tay et al. (2022)](https://arxiv.org/abs/2205.05131)         |   -  | - |  61.0  | - |
-MITQA    | IBM & IIT   | [Kumar et al. (2021)](https://arxiv.org/pdf/2112.07337.pdf)         |   65.5  | 72.7 |  64.3  | 71.9 |
+UL-20B           | Google    | [Tay et al. (2022)](https://arxiv.org/abs/2205.05131)                    |   -     | -    |  61.0  | -    |
+MITQA            | IBM & IIT | [Kumar et al. (2021)](https://arxiv.org/pdf/2112.07337.pdf)              |   65.5  | 72.7 |  64.3  | 71.9 |
+RHGN             | SEU       | [Yang et al. (2022)](https://link.springer.com/epdf/10.1007/s11227-022-05035-9?sharing_token=kouLCEDp9_vH1RkK8N9CAPe4RwlQNchNByi7wbcMAY4kj78xdT5rsS4-XKuj5N_XmnTRe7ko6X0kKaXyingc6wfoEGdQgx5hH9hDtcI6ivFPDd1p7A3RUWChRVmVBrgsvavXcujpAkPf2d1K1X-eE8ctae3eLrfxStzEdLP9uOs=).   |   62.8 | 70.4 |   60.6    |  68.1   |
 POINTR + MATE    | Google    | [Eisenschlos et al. (2021)](https://arxiv.org/pdf/2109.04312.pdf)         |   63.3  | 70.8 |  62.7  | 70.0 |
 POINTR + TAPAS   | Google    | [Eisenschlos et al. (2021)](https://arxiv.org/pdf/2109.04312.pdf)         |   63.4  | 71.0 |  62.8  | 70.2 |
-MuGER<sup>2</sup>            | JD AI Research | [Wang et al. (2022)](https://arxiv.org/abs/2210.10350)               | 57.1    | 67.3 | 56.3   |  66.2 |
+MuGER<sup>2</sup>| JD AI     | [Wang et al. (2022)](https://arxiv.org/abs/2210.10350)               | 57.1    | 67.3 | 56.3   |  66.2 |
 DocHopper        | CMU       | [Sun et al. (2021)](https://arxiv.org/abs/2106.00200)                     |   47.7  | 55.0 |  46.3  | 53.3 |
 HYBRIDER         | UCSB      | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |   43.5  | 50.6 |  42.2  | 49.9 |
 HYBRIDER-Large   | UCSB      | [Chen et al. (2020)](https://arxiv.org/abs/2004.07347)                    |  44.0   | 50.7 |  43.8  | 50.6 |
