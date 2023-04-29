@@ -133,6 +133,7 @@ The reported scores are EM and F1.
 
 **Model**                                     |  **Organization**  |**Reference**                                                             | **Dev-EM** | **Dev-F1** | **Test-EM** | **Test-F1** | 
 ----------|---------------------------|-----------------------------------|---------------------------------------------------------------------------|---------|----------|------------------|
+MAFiD            | JBNU & NAVER | [Lee et al. (2023)](https://aclanthology.org/2023.findings-eacl.177.pdf)| 66.2  | 74.1 |  65.4  | 73.6 |
 UL-20B           | Google    | [Tay et al. (2022)](https://arxiv.org/abs/2205.05131)                    |   -     | -    |  61.0  | -    |
 MITQA            | IBM & IIT | [Kumar et al. (2021)](https://arxiv.org/pdf/2112.07337.pdf)              |   65.5  | 72.7 |  64.3  | 71.9 |
 RHGN             | SEU       | [Yang et al. (2022)](https://link.springer.com/epdf/10.1007/s11227-022-05035-9?sharing_token=kouLCEDp9_vH1RkK8N9CAPe4RwlQNchNByi7wbcMAY4kj78xdT5rsS4-XKuj5N_XmnTRe7ko6X0kKaXyingc6wfoEGdQgx5hH9hDtcI6ivFPDd1p7A3RUWChRVmVBrgsvavXcujpAkPf2d1K1X-eE8ctae3eLrfxStzEdLP9uOs=)   |   62.8 | 70.4 |   60.6    |  68.1   |
